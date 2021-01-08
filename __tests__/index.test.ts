@@ -1,5 +1,5 @@
 import { ChartID, CKBJson } from '@antv/knowledge';
-import Thumbnails from '../index';
+import Thumbnails from '../src/index';
 
 test('index', () => {
   // tslint:disable-next-line: no-console
