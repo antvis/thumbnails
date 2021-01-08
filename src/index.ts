@@ -44,3 +44,6 @@ const Thumbnails: Partial<Record<ChartID, IChartImageInfo>> = {
 };
 
 export default Thumbnails;
+
+// react component for displaying Thumbnail images
+export { Thumbnail } from './components/Thumbnail';
