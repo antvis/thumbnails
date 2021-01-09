@@ -166,11 +166,17 @@ jobs:
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
         run: npm ci
 
+      - name: Pre Build
+        run: npm run build
+
       - name: Extract Svg
         run: npm run extractsvg strict
 
       - name: Update Readme Preview
         run: npm run readmepreview
+
+      - name: Post Build
+        run: npm run build
 
       - name: Commit files
         run: |
