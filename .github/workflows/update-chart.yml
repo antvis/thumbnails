@@ -1,0 +1,193 @@
+name: update-chart
+
+on:
+  pull_request:
+    branches: [master]
+    types: [labeled]
+  workflow_dispatch:
+
+jobs:
+  update:
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'update chart') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Get Changed SVGs
+        uses: jitterbit/get-changed-files@v1
+        id: files
+
+      - name: Get current time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYYMMDD-HH
+          utcOffset: "+08:00"
+
+      - name: String replace File Added
+        id: added_svgs
+        uses: frabert/replace-string-action@v1.2
+        with:
+          pattern: 'svgs\/([A-Za-z_]*)\.svg'
+          string: ${{ steps.files.outputs.added }}
+          replace-with: |
+            <tr>
+              <td align="center">$1</td>
+              <td align="center"></td>
+              <td align="center">+++<br>added</td>
+              <td align="center"><img src="https://raw.githubusercontent.com/antvis/thumbnails/${{ github.head_ref }}/svgs/$1.svg"></td>
+            </tr>
+          flags: "g"
+
+      - name: String replace File Modified
+        id: modified_svgs
+        uses: frabert/replace-string-action@v1.2
+        with:
+          pattern: 'svgs\/([A-Za-z_]*)\.svg'
+          string: ${{ steps.files.outputs.modified }}
+          replace-with: |
+            <tr>
+              <td align="center">$1</td>
+              <td align="center"><img src="https://raw.githubusercontent.com/antvis/thumbnails/${{ github.base_ref }}/svgs/$1.svg"></td>
+              <td align="center">>>><br>modified</td>
+              <td align="center"><img src="https://raw.githubusercontent.com/antvis/thumbnails/${{ github.head_ref }}/svgs/$1.svg"></td>
+            </tr>
+          flags: "g"
+
+      - name: String replace File Removed
+        id: removed_svgs
+        uses: frabert/replace-string-action@v1.2
+        with:
+          pattern: 'svgs\/([A-Za-z_]*)\.svg'
+          string: ${{ steps.files.outputs.removed }}
+          replace-with: |
+            <tr>
+              <td align="center">$1</td>
+              <td align="center"><img src="https://raw.githubusercontent.com/antvis/thumbnails/${{ github.base_ref }}/svgs/$1.svg"></td>
+              <td align="center">---<br>removed</td>
+              <td align="center"></td>
+            </tr>
+          flags: "g"
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: |
+            Preview >>>>
+
+      - name: Create comment
+        if: ${{ steps.fc.outputs.comment-id == 0 }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Preview >>>>
+
+            added: ${{ steps.files.outputs.added }}
+            modified: ${{ steps.files.outputs.modified }}
+            removed: ${{ steps.files.outputs.removed }}
+            renamed: ${{ steps.files.outputs.renamed }}
+
+            ---
+
+            <table>
+              <tr>
+                <th>chart id</th>
+                <th>base</th>
+                <th>status</th>
+                <th>head</th>
+              </tr>
+            ${{ steps.added_svgs.outputs.replaced }}
+            ${{ steps.modified_svgs.outputs.replaced }}
+            ${{ steps.removed_svgs.outputs.replaced }}
+            </table>
+
+      - name: Update comment
+        if: ${{ steps.fc.outputs.comment-id != 0 }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            Preview >>>>
+
+            added: ${{ steps.files.outputs.added }}
+            modified: ${{ steps.files.outputs.modified }}
+            removed: ${{ steps.files.outputs.removed }}
+            renamed: ${{ steps.files.outputs.renamed }}
+
+            ---
+
+            <table>
+              <tr>
+                <th>chart id</th>
+                <th>base</th>
+                <th>status</th>
+                <th>head</th>
+              </tr>
+            ${{ steps.added_svgs.outputs.replaced }}
+            ${{ steps.modified_svgs.outputs.replaced }}
+            ${{ steps.removed_svgs.outputs.replaced }}
+            </table>
+
+            This comment has been updated at ${{ steps.current-time.outputs.readableTime }}
+
+            The refreshing of the above pictures may be delayed, please wait and refresh manually.
+
+      - name: cache package-lock.json
+        uses: actions/cache@v2
+        with:
+          path: package-temp-dir
+          key: lock-${{ github.sha }}
+
+      - name: create package-lock.json
+        run: npm i --package-lock-only
+
+      - name: hack for single file
+        run: |
+          if [ ! -d "package-temp-dir" ]; then
+            mkdir package-temp-dir
+          fi
+          cp package-lock.json package-temp-dir
+      - name: cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
+
+      - name: install
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Pre Build
+        run: npm run build
+
+      - name: Extract Svg
+        run: npm run extractsvg strict
+
+      - name: Update Readme Preview
+        run: npm run readmepreview
+
+      - name: Post Build
+        run: npm run build
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull --ff-only origin ${{ github.head_ref }}
+          git add .
+          git commit -m "chore: Auto Update from SVGs" -a
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
