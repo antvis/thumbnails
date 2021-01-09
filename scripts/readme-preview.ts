@@ -1,3 +1,4 @@
+import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
 import * as fse from 'fs-extra';
 import * as path from 'path';
 import { GITHUB_IMAGE_PATH_PREFIX, SVG_PATH } from './utils';
@@ -5,6 +6,9 @@ import { GITHUB_IMAGE_PATH_PREFIX, SVG_PATH } from './utils';
 const START_SIGN = '<!-- PREVIEW START -->';
 const END_SIGN = '<!-- PREVIEW END -->';
 
+/**
+ * Template for images in README.
+ */
 const genPreviewHTML = (fileNames: string[]) => `
 <div style="display: flex; flex-flow: row wrap;">
 ${fileNames
@@ -14,7 +18,7 @@ ${fileNames
 `;
 
 /**
- * Update all svg ChartSymbols' thumbnails into README.
+ * Update all svg thumbnails in README.
  */
 const updateReadmePreview = async () => {
   const README = 'README.md';
@@ -25,7 +29,8 @@ const updateReadmePreview = async () => {
   const lines = readmeContent.split('\n');
 
   const files = await fse.readdir(SVG_PATH);
-  const previewContent = genPreviewHTML(files);
+  const validFiles = files.filter(f => CHART_ID_OPTIONS.includes(path.basename(f, path.extname(f)) as ChartID));
+  const previewContent = genPreviewHTML(validFiles);
   const previewLines = previewContent.split('\n');
 
   let startSignIndex;
