@@ -10,8 +10,6 @@ import COLUMN_CHART from './charts/column_chart';
 import DONUT_CHART from './charts/donut_chart';
 import GROUPED_BAR_CHART from './charts/grouped_bar_chart';
 import GROUPED_COLUMN_CHART from './charts/grouped_column_chart';
-import HEATMAP from './charts/heatmap';
-import HISTOGRAM from './charts/histogram';
 import LINE_CHART from './charts/line_chart';
 import PERCENT_STACKED_AREA_CHART from './charts/percent_stacked_area_chart';
 import PERCENT_STACKED_BAR_CHART from './charts/percent_stacked_bar_chart';
@@ -31,8 +29,6 @@ const Thumbnails: Partial<Record<ChartID, ChartImageInfo>> = {
   donut_chart: DONUT_CHART,
   grouped_bar_chart: GROUPED_BAR_CHART,
   grouped_column_chart: GROUPED_COLUMN_CHART,
-  heatmap: HEATMAP,
-  histogram: HISTOGRAM,
   line_chart: LINE_CHART,
   percent_stacked_area_chart: PERCENT_STACKED_AREA_CHART,
   percent_stacked_bar_chart: PERCENT_STACKED_BAR_CHART,
@@ -47,7 +43,7 @@ const Thumbnails: Partial<Record<ChartID, ChartImageInfo>> = {
 
 export default Thumbnails;
 
-export { AREA_CHART, BAR_CHART, BUBBLE_CHART, COLUMN_CHART, DONUT_CHART, GROUPED_BAR_CHART, GROUPED_COLUMN_CHART, HEATMAP, HISTOGRAM, LINE_CHART, PERCENT_STACKED_AREA_CHART, PERCENT_STACKED_BAR_CHART, PERCENT_STACKED_COLUMN_CHART, PIE_CHART, RADAR_CHART, SCATTER_PLOT, STACKED_AREA_CHART, STACKED_BAR_CHART, STACKED_COLUMN_CHART };
+export { AREA_CHART, BAR_CHART, BUBBLE_CHART, COLUMN_CHART, DONUT_CHART, GROUPED_BAR_CHART, GROUPED_COLUMN_CHART, LINE_CHART, PERCENT_STACKED_AREA_CHART, PERCENT_STACKED_BAR_CHART, PERCENT_STACKED_COLUMN_CHART, PIE_CHART, RADAR_CHART, SCATTER_PLOT, STACKED_AREA_CHART, STACKED_BAR_CHART, STACKED_COLUMN_CHART };
 
 // react component for displaying Thumbnail images
 export { Thumbnail } from './components/Thumbnail';
