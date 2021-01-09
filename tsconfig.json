@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "target": "ES5",
     "module": "commonjs",
     "lib": ["dom", "es2017"],
@@ -9,6 +10,6 @@
     "allowJs": true,
     "moduleResolution": "node"
   },
-  "include": ["src"],
+  "include": ["src", "scripts", "__tests__"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }

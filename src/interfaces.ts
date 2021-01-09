@@ -1,8 +1,7 @@
 import { ChartID } from '@antv/knowledge';
 
-export interface IChartImageInfo {
+export interface ChartImageInfo {
   id: ChartID;
   name: string;
   svgCode: string;
-  url: string;
 }
