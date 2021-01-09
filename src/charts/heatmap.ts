@@ -1,85 +1,12 @@
-import { ChartID } from '@antv/knowledge';
-import { IChartImageInfo } from '../interfaces';
+// heatmap
 
-const id: ChartID = 'heatmap';
+import { ChartImageInfo } from '../interfaces';
 
-const name: string = 'Heatmap';
-
-const svgCode: string = `
-<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <g fill="none" fill-rule="evenodd">
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="59" y="655">6</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="59" y="765">5</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="59" y="450">8</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="61" y="552">7</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="59" y="866">4</tspan>
-    </text>
-    <rect width="209" height="88" x="108" y="182" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="108" y="386" fill="#D9E9FF"/>
-    <rect width="209" height="88" x="108" y="591" fill="#5B8FF9"/>
-    <rect width="209" height="88" x="108" y="796" fill="#2F51AD"/>
-    <rect width="209" height="88" x="108" y="284" fill="#87B3FF"/>
-    <rect width="209" height="88" x="108" y="489" fill="#D9E9FF"/>
-    <rect width="209" height="88" x="108" y="693" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="332" y="182" fill="#436FD4"/>
-    <rect width="209" height="88" x="332" y="386" fill="#436FD4"/>
-    <rect width="209" height="88" x="332" y="591" fill="#D9E9FF"/>
-    <rect width="209" height="88" x="332" y="796" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="332" y="284" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="332" y="489" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="332" y="693" fill="#436FD4"/>
-    <rect width="209" height="88" x="556" y="182" fill="#436FD4"/>
-    <rect width="209" height="88" x="556" y="386" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="556" y="591" fill="#87B3FF"/>
-    <rect width="209" height="88" x="556" y="796" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="556" y="284" fill="#87B3FF"/>
-    <rect width="209" height="88" x="556" y="489" fill="#87B3FF"/>
-    <rect width="209" height="88" x="556" y="693" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="779" y="182" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="779" y="386" fill="#436FD4"/>
-    <rect width="209" height="88" x="779" y="591" fill="#87B3FF"/>
-    <rect width="209" height="88" x="779" y="796" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="779" y="284" fill="#5B8FF9"/>
-    <rect width="209" height="88" x="779" y="489" fill="#B0D0FF"/>
-    <rect width="209" height="88" x="779" y="693" fill="#B0D0FF"/>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="59" y="348">9</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="37" y="238">10</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="194" y="156">A</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="417" y="156">B</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="641" y="156">C</tspan>
-    </text>
-    <text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400">
-      <tspan x="864" y="156">D</tspan>
-    </text>
-  </g>
-</svg>
-`;
-
-const url: string = 'http://alipay-rmsdeploy-image.cn-hangzhou.alipay.aliyun-inc.com/antfincdn/6fxTNNgLmb/Heatmap.svg';
-
-const Heatmap: IChartImageInfo = {
-  id,
-  name,
-  svgCode,
-  url,
+const HEATMAP: ChartImageInfo = {
+  id: 'heatmap',
+  name: 'Heatmap',
+  svgCode:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><g fill="none" fill-rule="evenodd"><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="59" y="655">6</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="59" y="765">5</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="59" y="450">8</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="61" y="552">7</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="59" y="866">4</tspan></text><path fill="#B0D0FF" d="M108 182h209v88H108z"/><path fill="#D9E9FF" d="M108 386h209v88H108z"/><path fill="#5B8FF9" d="M108 591h209v88H108z"/><path fill="#2F51AD" d="M108 796h209v88H108z"/><path fill="#87B3FF" d="M108 284h209v88H108z"/><path fill="#D9E9FF" d="M108 489h209v88H108z"/><path fill="#B0D0FF" d="M108 693h209v88H108z"/><path fill="#436FD4" d="M332 182h209v88H332zM332 386h209v88H332z"/><path fill="#D9E9FF" d="M332 591h209v88H332z"/><path fill="#B0D0FF" d="M332 796h209v88H332zM332 284h209v88H332zM332 489h209v88H332z"/><path fill="#436FD4" d="M332 693h209v88H332zM556 182h209v88H556z"/><path fill="#B0D0FF" d="M556 386h209v88H556z"/><path fill="#87B3FF" d="M556 591h209v88H556z"/><path fill="#B0D0FF" d="M556 796h209v88H556z"/><path fill="#87B3FF" d="M556 284h209v88H556zM556 489h209v88H556z"/><path fill="#B0D0FF" d="M556 693h209v88H556zM779 182h209v88H779z"/><path fill="#436FD4" d="M779 386h209v88H779z"/><path fill="#87B3FF" d="M779 591h209v88H779z"/><path fill="#B0D0FF" d="M779 796h209v88H779z"/><path fill="#5B8FF9" d="M779 284h209v88H779z"/><path fill="#B0D0FF" d="M779 489h209v88H779zM779 693h209v88H779z"/><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="59" y="348">9</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="37" y="238">10</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="194" y="156">A</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="417" y="156">B</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="641" y="156">C</tspan></text><text fill="#999" font-family="PingFangSC-Medium, PingFang SC" font-size="52.8" font-weight="400"><tspan x="864" y="156">D</tspan></text></g></svg>',
 };
 
-export default Heatmap;
+export default HEATMAP;

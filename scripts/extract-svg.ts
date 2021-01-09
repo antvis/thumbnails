@@ -51,27 +51,47 @@ const genChartBaseRecord = async (fileName: string): Promise<ChartBaseRecord> =>
 
 const svgo: SVGO = new SVGO(SVGO_SETTINGS);
 
-// chartId.toUpperCase(): variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+/**
+ * Template of a chart file.
+ *
+ * chartId.toUpperCase(): variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+ */
 const fileTemplate = ({ chartId, chartName, svgCode }: ChartInfo) => `// ${chartId}
 
-const ${chartId.toUpperCase()} = {
+import { ChartImageInfo } from '../interfaces';
+
+const ${chartId.toUpperCase()}: ChartImageInfo = {
   id: '${chartId}',
   name: '${chartName}',
-  svgCode: '${svgCode}'
+  svgCode:
+    '${svgCode}',
 };
 
 export default ${chartId.toUpperCase()};
 `;
 
+/**
+ * Template of `index.ts` file
+ *
+ * @param chartFiles
+ */
 const indexTemplate = (chartFiles: string[]) => `// generated file index.ts
 
-${chartFiles.map((file: string) => `import ${file.toUpperCase()} from './${file}';`).join('\n')}
+import { ChartID } from '@antv/knowledge';
+import { ChartImageInfo } from './interfaces';
 
-export const ChartSymbols = {
-  ${chartFiles.map((file: string) => `${file.toUpperCase()}`).join(', ')}
+${chartFiles.map((file: string) => `import ${file.toUpperCase()} from './charts/${file}';`).join('\n')}
+
+const Thumbnails: Partial<Record<ChartID, ChartImageInfo>> = {
+${chartFiles.map((file: string) => `  ${file}: ${file.toUpperCase()}`).join(',\n')},
 };
 
+export default Thumbnails;
+
 export { ${chartFiles.map((file: string) => `${file.toUpperCase()}`).join(', ')} };
+
+// react component for displaying Thumbnail images
+export { Thumbnail } from './components/Thumbnail';
 `;
 
 const ckb = CKBJson();
@@ -153,7 +173,7 @@ const extractSVGs = async ({ strict }: ExtractSVGsParam) => {
   // update index.ts
 
   await fse.writeFile(
-    path.join(process.cwd(), TS_PATH, 'index.ts'),
+    path.join(process.cwd(), 'src', 'index.ts'),
     indexTemplate(chartBase.map(rec => rec.tsFileName).sort()),
   );
 };
