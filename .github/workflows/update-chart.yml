@@ -179,11 +179,11 @@ jobs:
         run: npm run build
 
       - name: Shall Commit
-        id: git_status
-        run: git status
+        run: |
+          echo "GIT_STATUS=$(git status)" >> $GITHUB_ENV
 
       - name: log
-        run: echo ${{steps.git_status.output}}
+        run: echo $GIT_STATUS
 
       - name: Commit files
         run: |
