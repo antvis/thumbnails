@@ -178,7 +178,17 @@ jobs:
       - name: Post Build
         run: npm run build
 
+      - name: Shall Commit
+        id: shall_commit
+        run: |-
+          status_msg=$(git status | tr -d '\n')
+          echo "::set-output name=status_msg::$status_msg"
+
+      - name: Git Stauts Log
+        run: echo "${{ steps.shall_commit.outputs.status_msg }}"
+
       - name: Commit files
+        if: ${{ !contains(steps.shall_commit.outputs.status_msg, 'nothing to commit') }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -187,6 +197,7 @@ jobs:
           git commit -m "chore: Auto Update from SVGs" -a
 
       - name: Push changes
+        if: ${{ !contains(steps.shall_commit.outputs.status_msg, 'nothing to commit') }}
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
