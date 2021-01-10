@@ -89,7 +89,7 @@ ${chartFiles.map((file: string) => `  ${file}: ${file.toUpperCase()}`).join(',\n
 export default Thumbnails;
 
 export {
-${chartFiles.map((file: string) => `  ${file.toUpperCase()}`).join(',\n')}
+${chartFiles.map((file: string) => `  ${file.toUpperCase()}`).join(',\n')},
 };
 
 // react component for displaying Thumbnail images
