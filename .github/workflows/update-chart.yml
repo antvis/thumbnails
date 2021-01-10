@@ -178,6 +178,13 @@ jobs:
       - name: Post Build
         run: npm run build
 
+      - name: Shall Commit
+        id: git_status
+        run: git status
+
+      - name: log
+        run: echo ${{steps.git_status.output}}
+
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
