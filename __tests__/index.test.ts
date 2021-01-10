@@ -1,5 +1,5 @@
 import { ChartID, CKBJson } from '@antv/knowledge';
-import Thumbnails from '../src/index';
+import Thumbnails, { BAR_CHART } from '../src/index';
 
 test('index', () => {
   const ckb = CKBJson();
@@ -14,4 +14,16 @@ test('index', () => {
       expect(!obj.svgCode).toBe(false);
     }
   });
+});
+
+test('object pie', () => {
+  if (Thumbnails.pie_chart) {
+    const { id, name, svgCode } = Thumbnails.pie_chart;
+    console.log(id, name, svgCode);
+  }
+});
+
+test('object bar', () => {
+  const { id, name, svgCode } = BAR_CHART;
+  console.log(id, name, svgCode);
 });

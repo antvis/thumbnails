@@ -14,7 +14,7 @@ class App extends React.Component<{}> {
           const { svgCode, name } = Thumbnails[chart];
           return (
             <div className="symbol-img-container">
-              <Thumbnail alt={name} svg={svgCode} />
+              <Thumbnail svg={svgCode} alt={name} width={200} />
             </div>
           );
         })}

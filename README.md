@@ -31,10 +31,44 @@ Thumbnail images for different chart types from [CKB](https://github.com/antvis/
 
 ## Usage
 
+### Use as Data in Object
+
+```ts
+import Thumbnails from '@antv/thumbnails';
+
+if (Thumbnails.pie_chart) {
+  const { id, name, svgCode } = Thumbnails.pie_chart;
+  console.log(id, name, svgCode);
+}
+});
+```
+
+```ts
+import  { BAR_CHART } from '@antv/thumbnails';
+
+test('object bar', () => {
+  const { id, name, svgCode } = BAR_CHART;
+  console.log(id, name, svgCode);
+```
+
+The ChartIDs are listed in: [AVA/CKB](https://github.com/antvis/AVA/blob/master/packages/knowledge/src/chartID.ts).
+
+### Use as React Component
+
+```tsx
+import Thumbnails, { Thumbnail } from '@antv/thumbnails';
+
+// Thumbnail is the React Component
+// ...
+  <Thumbnail svg={svgCode} />
+```
+
+For example:
+
 ```tsx
 import * as React from 'react';
 
-import Thumbnails, { Thumbnail } from '../src';
+import Thumbnails, { Thumbnail } from '@antv/thumbnails';
 
 class App extends React.Component<{}> {
   constructor(props: {}) {
@@ -48,7 +82,7 @@ class App extends React.Component<{}> {
           const { svgCode, name } = Thumbnails[chart];
           return (
             <div className="symbol-img-container">
-              <Thumbnail alt={name} svg={svgCode} />
+              <Thumbnail svg={svgCode} alt={name} width={200} />
             </div>
           );
         })}
@@ -58,6 +92,7 @@ class App extends React.Component<{}> {
 }
 
 export default App;
+
 ```
 
 ## Development
