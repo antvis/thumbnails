@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ThumbnailProps {
-  svg: string;
+  svg?: string;
   alt?: string;
   width?: string | number;
   height?: string | number;
