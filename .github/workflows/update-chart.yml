@@ -184,9 +184,6 @@ jobs:
           status_msg=$(git status | tr -d '\n')
           echo "::set-output name=status_msg::$status_msg"
 
-      - name: Git Stauts Log
-        run: echo "${{ steps.shall_commit.outputs.status_msg }}"
-
       - name: Commit files
         if: ${{ !contains(steps.shall_commit.outputs.status_msg, 'nothing to commit') }}
         run: |
