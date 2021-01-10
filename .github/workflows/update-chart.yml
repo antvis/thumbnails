@@ -187,6 +187,9 @@ jobs:
       - name: Git Stauts Log
         run: echo "${{ steps.shall_commit.outputs.status_msg }}"
 
+      - name: check
+        run: echo "${{ !contains(steps.shall_commit.outputs.status_msg, 'nothing to commit') }}"
+
       - name: Commit files
         if: ${{ !contains(steps.shall_commit.outputs.status_msg, 'nothing to commit') }}
         run: |
