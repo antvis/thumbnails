@@ -180,7 +180,7 @@ jobs:
 
       - name: Shall Commit
         run: |
-          echo "GIT_STATUS=$(echo "git status")" >> $GITHUB_ENV
+          echo "GIT_STATUS=$(git status)" >> $GITHUB_ENV
 
       - name: log
         run: echo $GIT_STATUS
