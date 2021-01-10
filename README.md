@@ -13,6 +13,7 @@ Thumbnail images for different chart types from [CKB](https://github.com/antvis/
   <img src="https://github.com/antvis/thumbnails/blob/master/svgs/donut_chart.svg" width="180" height="200">
   <img src="https://github.com/antvis/thumbnails/blob/master/svgs/grouped_bar_chart.svg" width="180" height="200">
   <img src="https://github.com/antvis/thumbnails/blob/master/svgs/grouped_column_chart.svg" width="180" height="200">
+  <img src="https://github.com/antvis/thumbnails/blob/master/svgs/heatmap.svg" width="180" height="200">
   <img src="https://github.com/antvis/thumbnails/blob/master/svgs/histogram.svg" width="180" height="200">
   <img src="https://github.com/antvis/thumbnails/blob/master/svgs/line_chart.svg" width="180" height="200">
   <img src="https://github.com/antvis/thumbnails/blob/master/svgs/percent_stacked_area_chart.svg" width="180" height="200">
