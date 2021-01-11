@@ -15,7 +15,7 @@ const prodConfig = {
     libraryExport: 'default',
   },
   resolve: {
-    extensions: ['.js', '.ts', '.json'],
+    extensions: ['.js', '.ts', '.tsx', '.json'],
     mainFields: ['module', 'browser', 'main'],
   },
   module: {
@@ -29,6 +29,19 @@ const prodConfig = {
           plugins: [
             '@babel/plugin-transform-runtime',
             '@babel/plugin-proposal-export-default-from',
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-proposal-object-rest-spread',
+          ],
+        },
+      },
+      {
+        test: /\.(t|j)sx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-typescript', ['@babel/preset-env', { modules: 'commonjs' }], '@babel/preset-react'],
+          plugins: [
+            '@babel/plugin-transform-runtime',
             '@babel/plugin-proposal-class-properties',
             '@babel/plugin-proposal-object-rest-spread',
           ],

@@ -46,9 +46,8 @@ if (Thumbnails.pie_chart) {
 ```ts
 import  { BAR_CHART } from '@antv/thumbnails';
 
-test('object bar', () => {
-  const { id, name, svgCode } = BAR_CHART;
-  console.log(id, name, svgCode);
+const { id, name, svgCode } = BAR_CHART;
+console.log(id, name, svgCode);
 ```
 
 The ChartIDs are listed in: [AVA/CKB](https://github.com/antvis/AVA/blob/master/packages/knowledge/src/chartID.ts).
