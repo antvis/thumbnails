@@ -43,8 +43,10 @@ if (Thumbnails.pie_chart) {
 });
 ```
 
+**NOTICE: You may have to import lower_case chart id in tools like Codesandbox or riddle. See [issue#12](https://github.com/antvis/thumbnails/issues/12).**
+
 ```ts
-import  { BAR_CHART } from '@antv/thumbnails';
+import { BAR_CHART } from '@antv/thumbnails';
 
 const { id, name, svgCode } = BAR_CHART;
 console.log(id, name, svgCode);
@@ -55,11 +57,22 @@ The ChartIDs are listed in: [AVA/CKB](https://github.com/antvis/AVA/blob/master/
 ### Use as React Component
 
 ```tsx
-import { Thumbnails, Thumbnail } from '@antv/thumbnails';
+import Thumbnails, { Thumbnail, PIE_CHART } from '@antv/thumbnails';
 
 // Thumbnail is the React Component
 // ...
-  <Thumbnail svg={svgCode} />
+
+  // define a chart id from 'AVA/CKB'
+  <Thumbnail chart={'pie_chart'} />
+  
+  // get the svg code from Thumbnails object
+  <Thumbnail svg={Thumbnails.pie_chart.svgCode} />
+
+  // get the svg code from specific chart thumbnail object
+  <Thumbnail svg={PIE_CHART.svgCode} />
+
+  // with other img HTML attributes
+  <Thumbnail chart={'pie_chart'} alt={'pie'} width={80} />
 ```
 
 For example:
@@ -67,7 +80,7 @@ For example:
 ```tsx
 import * as React from 'react';
 
-import { Thumbnails, Thumbnail } from '@antv/thumbnails';
+import Thumbnails, { Thumbnail } from '@antv/thumbnails';
 
 class App extends React.Component<{}> {
   constructor(props: {}) {

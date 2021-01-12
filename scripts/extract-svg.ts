@@ -86,7 +86,7 @@ const Thumbnails: Partial<Record<ChartID, ChartImageInfo>> = {
 ${chartFiles.map((file: string) => `  ${file}: ${file.toUpperCase()}`).join(',\n')},
 };
 
-export { Thumbnails };
+export default Thumbnails;
 
 export {
 ${chartFiles.map((file: string) => `  ${file.toUpperCase()}`).join(',\n')},

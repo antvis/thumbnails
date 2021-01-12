@@ -1,18 +1,26 @@
+import { ChartID } from '@antv/knowledge';
 import * as React from 'react';
-
-export interface ThumbnailProps {
+import Thumbnails from '../index';
+export interface ThumbnailProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  chart?: ChartID;
   svg?: string;
-  alt?: string;
-  width?: string | number;
-  height?: string | number;
 }
 
 export const Thumbnail = (props: ThumbnailProps) => {
-  const { svg, ...otherProps } = props;
+  const { chart, svg, ...otherProps } = props;
 
-  const src = svg
-    ? `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`
-    : 'https://gw.alipayobjects.com/zos/antfincdn/lP6YFnCEjy/nochartimg.svg';
+  // default no-chart-img
+  let src = 'https://gw.alipayobjects.com/zos/antfincdn/lP6YFnCEjy/nochartimg.svg';
+
+  // `svg` overwrites `chart`
+  if (svg) {
+    src = `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  } else if (chart) {
+    const svgForChart = Thumbnails[chart]?.svgCode;
+    if (svgForChart) {
+      src = `data:image/svg+xml;utf8,${encodeURIComponent(svgForChart)}`;
+    }
+  }
 
   return <img src={src} {...otherProps} />;
 };
