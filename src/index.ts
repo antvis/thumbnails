@@ -45,7 +45,7 @@ const Thumbnails: Partial<Record<ChartID, ChartImageInfo>> = {
   stacked_column_chart: STACKED_COLUMN_CHART,
 };
 
-export default Thumbnails;
+export { Thumbnails };
 
 export {
   AREA_CHART,

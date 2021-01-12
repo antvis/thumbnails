@@ -55,7 +55,7 @@ The ChartIDs are listed in: [AVA/CKB](https://github.com/antvis/AVA/blob/master/
 ### Use as React Component
 
 ```tsx
-import Thumbnails, { Thumbnail } from '@antv/thumbnails';
+import { Thumbnails, Thumbnail } from '@antv/thumbnails';
 
 // Thumbnail is the React Component
 // ...
@@ -67,7 +67,7 @@ For example:
 ```tsx
 import * as React from 'react';
 
-import Thumbnails, { Thumbnail } from '@antv/thumbnails';
+import { Thumbnails, Thumbnail } from '@antv/thumbnails';
 
 class App extends React.Component<{}> {
   constructor(props: {}) {

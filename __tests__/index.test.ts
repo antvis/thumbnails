@@ -1,5 +1,5 @@
 import { ChartID, CKBJson } from '@antv/knowledge';
-import Thumbnails, { BAR_CHART } from '../src/index';
+import { Thumbnails, BAR_CHART } from '../src/index';
 
 test('index', () => {
   const ckb = CKBJson();

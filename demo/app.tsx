@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Thumbnails, { Thumbnail } from '../src';
+import { Thumbnails, Thumbnail } from '../src';
 
 class App extends React.Component<{}> {
   constructor(props: {}) {
