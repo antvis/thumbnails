@@ -71,11 +71,11 @@ export default ${chartId.toUpperCase()};
 `;
 
 /**
- * Template of `index.ts` file
+ * Template of `thumbnails.ts` file
  *
  * @param chartFiles
  */
-const indexTemplate = (chartFiles: string[]) => `// generated file index.ts
+const thumbnailsTemplate = (chartFiles: string[]) => `// generated file thumbnails.ts
 
 import { ChartID } from '@antv/knowledge';
 import { ChartImageInfo } from './interfaces';
@@ -91,9 +91,6 @@ export default Thumbnails;
 export {
 ${chartFiles.map((file: string) => `  ${file.toUpperCase()}`).join(',\n')},
 };
-
-// react component for displaying Thumbnail images
-export { Thumbnail } from './components/Thumbnail';
 `;
 
 const ckb = CKBJson();
@@ -172,11 +169,11 @@ const extractSVGs = async ({ strict }: ExtractSVGsParam) => {
     }),
   );
 
-  // update index.ts
+  // update thumbnails.ts
 
   await fse.writeFile(
-    path.join(process.cwd(), 'src', 'index.ts'),
-    indexTemplate(chartBase.map(rec => rec.tsFileName).sort()),
+    path.join(process.cwd(), 'src', 'thumbnails.ts'),
+    thumbnailsTemplate(chartBase.map(rec => rec.tsFileName).sort()),
   );
 };
 
