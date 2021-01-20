@@ -12,7 +12,6 @@ const prodConfig = {
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist/'),
     filename: 'index.js',
-    libraryExport: 'default',
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.json'],
