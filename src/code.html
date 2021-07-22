@@ -1,38 +1,4 @@
-import * as puppeteer from 'puppeteer';
-import * as path from 'path';
-import * as fse from 'fs-extra';
-
-const saveScreenshot = async (url:string, path:string) => {
-
-
-    const browser = await puppeteer.launch();
-
-    const page = await browser.newPage();
-  
-    page.setViewport({
-      width:1376,
-      height:768
-    })
-  
-    await page.goto(url);
-  
-    await page.waitForTimeout(3000)
-  
-    const area = await page.evaluate(()=>document.querySelector('#area svg')?.outerHTML)
-
-    await fse.writeFile('src/area.svg',area);
-
-    await page.screenshot({path});
-  
-    await browser.close();
-
-  
- 
-}
-
-(async ()=>{
-
-  const htmlFile = `<html>
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -81,19 +47,3 @@ const saveScreenshot = async (url:string, path:string) => {
     area.render();
   </script>
 </html>
-`
-
-  const codeFileDir = path.resolve(__dirname,'../..');
-  const codeFilePath = path.join(codeFileDir,'src/code.html');
-
-  try {
-    await fse.ensureDir(codeFileDir);
-    await fse.writeFile(codeFilePath, htmlFile);
-
-
-    await saveScreenshot(`file:${codeFilePath}`,'/Users/neoddish/Desktop/xxxbaid.png')
-  } catch (error) {
-    console.log(error)
-  }
-
-})();
