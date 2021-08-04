@@ -18,6 +18,7 @@
     "build": "rm -rf lib && tsc --pretty",
     "extractsvg": "node lib/scripts/extract-svg.js",
     "readmepreview": "node lib/scripts/readme-preview.js",
+    "test:gen": "npm run build && node lib/scripts/generate.js && node lib/scripts/headless.js",
     "update": "npm run build && npm run extractsvg && npm run readmepreview && npm run build",
     "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",

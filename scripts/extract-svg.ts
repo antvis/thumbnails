@@ -4,7 +4,7 @@ import * as inquirer from 'inquirer';
 import * as path from 'path';
 import * as SVGO from 'svgo';
 import { SVGO_SETTINGS } from './svgo-settings';
-import { SVG_PATH, TS_PATH } from './utils';
+import { SVG_PATH, TS_PATH } from './consts';
 
 interface ChartInfo {
   chartId: string;

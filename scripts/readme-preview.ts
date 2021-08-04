@@ -1,7 +1,7 @@
 import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
 import * as fse from 'fs-extra';
 import * as path from 'path';
-import { GITHUB_IMAGE_PATH_PREFIX, SVG_PATH } from './utils';
+import { GITHUB_IMAGE_PATH_PREFIX, SVG_PATH } from './consts';
 
 const START_SIGN = '<!-- PREVIEW START -->';
 const END_SIGN = '<!-- PREVIEW END -->';
