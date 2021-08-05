@@ -1,6 +1,6 @@
 {
   "name": "@antv/thumbnails",
-  "version": "1.3.0",
+  "version": "2.0.0-alpha.1",
   "description": "Thumbnails of Chart Types.",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
