@@ -5,7 +5,7 @@ test('index', () => {
   const ckb = CKBJson();
 
   const keys: ChartID[] = Object.keys(Thumbnails) as ChartID[];
-  keys.forEach(key => {
+  keys.forEach((key) => {
     const obj = Thumbnails[key];
     expect(!!obj).toBe(true);
     if (obj) {
