@@ -33,10 +33,10 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
-    "extractsvg": "node lib/scripts/extract-svg.js",
+    "gen-ts": "node lib/scripts/generate-ts-files.js",
     "readmepreview": "node lib/scripts/readme-preview.js",
-    "test:gen": "npm run build && node lib/scripts/generate.js && node lib/scripts/headless.js",
-    "update": "npm run build && npm run extractsvg && npm run readmepreview && npm run build"
+    "test:gen": "npm run build && node lib/scripts/generate-sample-html.js && node lib/scripts/get-svgs.js",
+    "update": "npm run build && npm run gen-ts && npm run readmepreview && npm run build"
   },
   "repository": {
     "type": "git",
