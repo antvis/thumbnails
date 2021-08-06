@@ -1,6 +1,6 @@
+import * as path from 'path';
 import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
 import * as inquirer from 'inquirer';
-import * as path from 'path';
 import * as fse from 'fs-extra';
 import { CODE_PATH, DEFAULT_HTMLPATH } from './consts';
 
@@ -26,41 +26,39 @@ export const generateSampleHTML = async ({ strict = false, htmlPath }: Params) =
 
   const chartCodeFiles = await fse.readdir(CODE_PATH);
 
-  chartCodeFiles.forEach(file => {
+  chartCodeFiles.forEach((file) => {
     const fileExtName = path.extname(file);
     const fileName = path.basename(file, fileExtName);
 
     if (fileExtName !== '.js') {
       notices.push(`WARN: File ${file} is not with .js and it has been ignored.`);
-    } else {
+    } else if (CHART_ID_OPTIONS.includes(fileName as ChartID)) {
       // The name of `file` should be a ChartID
-      if (CHART_ID_OPTIONS.includes(fileName as ChartID)) {
-        validFiles.push(file);
-      } else {
-        questions.push({
-          default: false,
-          message: `The name of file ${file} is not a ChartID. Still want to add it?`,
-          name: file,
-          type: 'confirm',
-        });
-      }
+      validFiles.push(file);
+    } else {
+      questions.push({
+        default: false,
+        message: `The name of file ${file} is not a ChartID. Still want to add it?`,
+        name: file,
+        type: 'confirm',
+      });
     }
   });
 
-  notices.forEach(notice => console.log(notice));
+  notices.forEach((notice) => console.log(notice));
 
   if (strict) {
     questions.forEach(({ name }) =>
-      console.log(`WARN: The name of file ${name} is not a ChartID. It has been ignored.`),
+      console.log(`WARN: The name of file ${name} is not a ChartID. It has been ignored.`)
     );
   } else {
-    await inquirer.prompt(questions).then(async answers => {
+    await inquirer.prompt(questions).then(async (answers) => {
       await Promise.all(
-        Object.keys(answers).map(async file => {
+        Object.keys(answers).map(async (file) => {
           if (answers[file]) {
             validFiles.push(file);
           }
-        }),
+        })
       );
     });
   }
@@ -68,13 +66,13 @@ export const generateSampleHTML = async ({ strict = false, htmlPath }: Params) =
   // collect: chartID - G2Plot code string
 
   await Promise.all(
-    validFiles.map(async file => {
+    validFiles.map(async (file) => {
       const fileExtName = path.extname(file);
       const fileName = path.basename(file, fileExtName);
       const filePath = path.join(process.cwd(), CODE_PATH, file);
       const result = await fse.readFile(filePath as string, { encoding: 'utf8' });
       chartCodeMap[fileName] = result;
-    }),
+    })
   );
 
   // generate html file
@@ -88,11 +86,11 @@ export const generateSampleHTML = async ({ strict = false, htmlPath }: Params) =
   </head>
   <body>
     ${Object.keys(chartCodeMap)
-      .map(chartID => `<div id="${chartID}"></div>`)
+      .map((chartID) => `<div id="${chartID}"></div>`)
       .join('\n\t\t')}
   </body>
   ${Object.values(chartCodeMap)
-    .map(code => `<script>${code}</script>`)
+    .map((code) => `<script>${code}</script>`)
     .join('\n')}
 </html>
 `;
