@@ -1,10 +1,13 @@
+import * as path from 'path';
 import { CHART_ID_OPTIONS, ChartID, CKBJson } from '@antv/knowledge';
 import * as fse from 'fs-extra';
 import * as inquirer from 'inquirer';
-import * as path from 'path';
-import * as SVGO from 'svgo';
+import SVGO from 'svgo';
 import { SVGO_SETTINGS } from './svgo-settings';
 import { SVG_PATH, TS_PATH } from './consts';
+
+const svgo: SVGO = new SVGO(SVGO_SETTINGS);
+const ckb = CKBJson();
 
 interface ChartInfo {
   chartId: string;
@@ -49,8 +52,6 @@ const genChartBaseRecord = async (fileName: string): Promise<ChartBaseRecord> =>
   };
 };
 
-const svgo: SVGO = new SVGO(SVGO_SETTINGS);
-
 /**
  * Template of a chart file.
  *
@@ -93,8 +94,6 @@ ${chartFiles.map((file: string) => `  ${file.toUpperCase()}`).join(',\n')},
 };
 `;
 
-const ckb = CKBJson();
-
 /**
  * Extract svg images from `svgs/`, optimize svg codes
  * and then generate corresponding ts file in `src/charts/`.
@@ -110,42 +109,40 @@ const extractSVGs = async ({ strict }: ExtractSVGsParam) => {
   const notices: string[] = [];
 
   await Promise.all(
-    files.map(async file => {
+    files.map(async (file) => {
       const fileExtName = path.extname(file);
       const fileName = path.basename(file, fileExtName);
 
       if (fileExtName !== '.svg') {
         notices.push(`File ${file} is not with .svg and it has been ignored.`);
-      } else {
+      } else if (CHART_ID_OPTIONS.includes(fileName as ChartID)) {
         // `file` should be a ChartID
-        if (CHART_ID_OPTIONS.includes(fileName as ChartID)) {
-          chartBase.push(await genChartBaseRecord(fileName));
-        } else {
-          questions.push({
-            default: false,
-            message: `The name of file ${fileName} is not a ChartID. Still want to add it?`,
-            name: fileName,
-            type: 'confirm',
-          });
-        }
+        chartBase.push(await genChartBaseRecord(fileName));
+      } else {
+        questions.push({
+          default: false,
+          message: `The name of file ${fileName} is not a ChartID. Still want to add it?`,
+          name: fileName,
+          type: 'confirm',
+        });
       }
-    }),
+    })
   );
 
   // tslint:disable-next-line: no-console
-  notices.forEach(notice => console.log(notice));
+  notices.forEach((notice) => console.log(notice));
 
   if (strict) {
     // tslint:disable-next-line: no-console
     questions.forEach(({ name }) => console.log(`The name of file ${name} is not a ChartID. It has been ignored.`));
   } else {
-    await inquirer.prompt(questions).then(async answers => {
+    await inquirer.prompt(questions).then(async (answers) => {
       await Promise.all(
-        Object.keys(answers).map(async fileName => {
+        Object.keys(answers).map(async (fileName) => {
           if (answers[fileName]) {
             chartBase.push(await genChartBaseRecord(fileName));
           }
-        }),
+        })
       );
     });
   }
@@ -153,34 +150,34 @@ const extractSVGs = async ({ strict }: ExtractSVGsParam) => {
   // clear charts
 
   const currentTsFileNames = await fse.readdir(TS_PATH);
-  const currentTsFilePaths = currentTsFileNames.map(fileName => path.join(process.cwd(), TS_PATH, fileName));
+  const currentTsFilePaths = currentTsFileNames.map((fileName) => path.join(process.cwd(), TS_PATH, fileName));
   await Promise.all(
-    currentTsFilePaths.map(async tsPath => {
+    currentTsFilePaths.map(async (tsPath) => {
       await fse.unlink(tsPath);
-    }),
+    })
   );
 
   // generate ts files
 
   await Promise.all(
-    chartBase.map(async rec => {
+    chartBase.map(async (rec) => {
       const { tsFilePath, chartId, chartName, svgCode } = rec;
       await fse.writeFile(tsFilePath, fileTemplate({ chartId, chartName, svgCode }));
-    }),
+    })
   );
 
   // update thumbnails.ts
 
   await fse.writeFile(
     path.join(process.cwd(), 'src', 'thumbnails.ts'),
-    thumbnailsTemplate(chartBase.map(rec => rec.tsFileName).sort()),
+    thumbnailsTemplate(chartBase.map((rec) => rec.tsFileName).sort())
   );
 };
 
 (async () => {
   const myArgs = process.argv.slice(2);
 
-  const isStrictMode = myArgs.length && myArgs[0] && myArgs[0] === 'strict' ? true : false;
+  const isStrictMode = myArgs.length > 0 && myArgs[0] === 'strict';
 
   await extractSVGs({ strict: isStrictMode });
 

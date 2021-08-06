@@ -72,6 +72,7 @@ module.exports = {
         warnOnUnassignedImports: true,
       },
     ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['__tests__/**/*', 'scripts/**/*'] }],
   },
   settings: {
     react: {

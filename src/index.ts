@@ -1,4 +1,5 @@
 import Thumbnails from './thumbnails';
+
 export default Thumbnails;
 
 export * from './thumbnails';
