@@ -15,7 +15,12 @@
     "pretty": true,
     "lib": ["DOM", "ESNext"],
     "skipLibCheck": true,
+    "sourceRoot": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"]
+    }
   },
-  "include": ["scripts"],
+  "include": ["src", "__tests__"],
   "exclude": ["node_modules"]
 }
