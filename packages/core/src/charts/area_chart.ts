@@ -16,7 +16,7 @@ const AREA_CHART: ChartImageInfo = {
     { 'year': 2019, value: 170 },
     { 'year': 2020, value: 240 },
   ]
-  
+
   const area = new Area('container', {
     height: 200,
     width: 200,
