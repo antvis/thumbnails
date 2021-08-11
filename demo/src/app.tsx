@@ -1,5 +1,7 @@
+/* eslint-disable quotes */
+// TODO: solve eslint quotes - conflicts with prettier
 import * as React from 'react';
-import Thumbnails, { Thumbnail, BAR_CHART } from '../../src';
+import Thumbnails, { Thumbnail, BAR_CHART } from '../../packages/core/src';
 
 class App extends React.Component<{}> {
   constructor(props: {}) {
@@ -24,7 +26,7 @@ class App extends React.Component<{}> {
 
         <br />
 
-        <code>{"<Thumbnail chart={'pie_chart'} alt={'pie'} width={200} />"}</code>
+        <code>{`<Thumbnail chart={'pie_chart'} alt={'pie'} width={200} />`}</code>
         <div className="symbol-img-container">
           <Thumbnail chart={'pie_chart'} alt={'pie'} width={200} />
         </div>

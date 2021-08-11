@@ -7,80 +7,82 @@
   </head>
   <body>
     <div id="area_chart"></div>
-		<div id="bar_chart"></div>
+    <div id="bar_chart"></div>
   </body>
-  <script>const { Area } = G2Plot;
+  <script>
+    const { Area } = G2Plot;
 
-const area_data = [
-  { year: 2016, value: 150 },
-  { year: 2017, value: 90 },
-  { year: 2018, value: 180 },
-  { year: 2019, value: 170 },
-  { year: 2020, value: 240 },
-];
+    const area_data = [
+      { year: 2016, value: 150 },
+      { year: 2017, value: 90 },
+      { year: 2018, value: 180 },
+      { year: 2019, value: 170 },
+      { year: 2020, value: 240 },
+    ];
 
-const area = new Area('area_chart', {
-  height: 200,
-  width: 200,
-  autoFit: false,
-  data: area_data,
-  xField: 'year',
-  yField: 'value',
-  xAxis: {
-    range: [0, 1],
-    label: {
-      style: {
-        fontSize: 12,
+    const area = new Area('area_chart', {
+      height: 200,
+      width: 200,
+      autoFit: false,
+      data: area_data,
+      xField: 'year',
+      yField: 'value',
+      xAxis: {
+        range: [0, 1],
+        label: {
+          style: {
+            fontSize: 12,
+          },
+        },
       },
-    },
-  },
-  yAxis: {
-    tickInterval: 100,
-    label: {
-      style: {
-        fontSize: 12,
+      yAxis: {
+        tickInterval: 100,
+        label: {
+          style: {
+            fontSize: 12,
+          },
+        },
       },
-    },
-  },
-  renderer: 'svg',
-});
+      renderer: 'svg',
+    });
 
-area.render();
-</script>
-<script>const { Bar } = G2Plot;
+    area.render();
+  </script>
+  <script>
+    const { Bar } = G2Plot;
 
-const bar_data = [
-  { category: 'A', value: 140 },
-  { category: 'B', value: 115 },
-  { category: 'C', value: 260 },
-  { category: 'D', value: 220 },
-];
+    const bar_data = [
+      { category: 'A', value: 140 },
+      { category: 'B', value: 115 },
+      { category: 'C', value: 260 },
+      { category: 'D', value: 220 },
+    ];
 
-const bar = new Bar('bar_chart', {
-  height: 200,
-  width: 200,
-  autoFit: false,
-  data: bar_data,
-  xField: 'value',
-  yField: 'category',
-  xAxis: {
-    tickInterval: 100,
-    label: {
-      style: {
-        fontSize: 12,
+    const bar = new Bar('bar_chart', {
+      height: 200,
+      width: 200,
+      autoFit: false,
+      data: bar_data,
+      xField: 'value',
+      yField: 'category',
+      xAxis: {
+        tickInterval: 100,
+        label: {
+          style: {
+            fontSize: 12,
+          },
+        },
       },
-    },
-  },
-  yAxis: {
-    label: {
-      style: {
-        fontSize: 12,
+      yAxis: {
+        label: {
+          style: {
+            fontSize: 12,
+          },
+        },
       },
-    },
-  },
-  renderer: 'svg',
-});
+      renderer: 'svg',
+    });
 
-bar.render();
-</script>
+    bar.render();
+  </script>
 </html>

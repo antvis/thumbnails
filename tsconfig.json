@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "pretty": true,
     "lib": ["DOM", "ESNext"],
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "include": ["scripts"],
   "exclude": ["node_modules"]

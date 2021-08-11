@@ -1,8 +1,8 @@
 import rollupConfig from '../../rollup.config';
 
-export default rollupConfig('ts', {
+export default rollupConfig('react', {
   input: './src/index.ts',
   output: {
-    name: 'Thumbnails',
+    name: 'Thumbnail',
   },
 });
