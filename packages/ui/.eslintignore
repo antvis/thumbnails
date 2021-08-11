@@ -21,6 +21,3 @@ site/
 webpack.*.js
 gatsby-*.js
 global.d.ts
-
-# ignore code templates
-packages/core/src/code/

@@ -64,7 +64,7 @@ import Thumbnails, { Thumbnail, PIE_CHART } from '@antv/thumbnails';
 
   // define a chart id from 'AVA/CKB'
   <Thumbnail chart={'pie_chart'} />
-  
+
   // get the svg code from Thumbnails object
   <Thumbnail svg={Thumbnails.pie_chart.svgCode} />
 
@@ -90,7 +90,7 @@ class App extends React.Component<{}> {
   public render() {
     return (
       <div className="symbols">
-        {Object.keys(Thumbnails).map(chart => {
+        {Object.keys(Thumbnails).map((chart) => {
           const { svgCode, name } = Thumbnails[chart];
           return (
             <div className="symbol-img-container">
@@ -104,7 +104,6 @@ class App extends React.Component<{}> {
 }
 
 export default App;
-
 ```
 
 ## Development
