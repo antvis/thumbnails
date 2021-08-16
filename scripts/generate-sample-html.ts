@@ -2,9 +2,10 @@ import * as path from 'path';
 import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
 import * as inquirer from 'inquirer';
 import * as fse from 'fs-extra';
-import { CODE_PATH, DEFAULT_HTMLPATH } from './consts';
+import { CODE_DIR, DEFAULT_HTMLPATH } from './consts';
 
 interface Params {
+  codeDir: string;
   htmlPath: string;
   strict?: boolean;
 }
@@ -12,10 +13,11 @@ interface Params {
 /**
  * Generate a HTML page that contains all chart doms by G2Plot.
  *
+ * @param Params.codeDir directory of G2Plot source code templates.
  * @param Params.htmlPath path of the generated html file.
  * @param Params.strict whether allow chart ids outside AVA CKB. Default false.
  */
-export const generateSampleHTML = async ({ strict = false, htmlPath }: Params) => {
+export const generateSampleHTML = async ({ codeDir, htmlPath, strict = false }: Params) => {
   const validFiles: string[] = [];
   const chartCodeMap: Record<string, string> = {};
 
@@ -24,7 +26,11 @@ export const generateSampleHTML = async ({ strict = false, htmlPath }: Params) =
 
   // read js files of chart samples
 
-  const chartCodeFiles = await fse.readdir(CODE_PATH);
+  const codeDirExists = await fse.pathExists(codeDir);
+  if (!codeDirExists) return;
+
+  const chartCodeFiles = await fse.readdir(codeDir);
+  if (!chartCodeFiles || chartCodeFiles.length === 0) return;
 
   chartCodeFiles.forEach((file) => {
     const fileExtName = path.extname(file);
@@ -69,7 +75,7 @@ export const generateSampleHTML = async ({ strict = false, htmlPath }: Params) =
     validFiles.map(async (file) => {
       const fileExtName = path.extname(file);
       const fileName = path.basename(file, fileExtName);
-      const filePath = path.join(process.cwd(), CODE_PATH, file);
+      const filePath = path.join(process.cwd(), codeDir, file);
       const result = await fse.readFile(filePath as string, { encoding: 'utf8' });
       chartCodeMap[fileName] = result;
     })
@@ -104,7 +110,7 @@ export const generateSampleHTML = async ({ strict = false, htmlPath }: Params) =
   const myArgs = process.argv.slice(2);
   const isStrictMode = myArgs.length > 0 && myArgs[0] === 'strict';
 
-  await generateSampleHTML({ strict: isStrictMode, htmlPath: DEFAULT_HTMLPATH });
+  await generateSampleHTML({ codeDir: CODE_DIR, htmlPath: DEFAULT_HTMLPATH, strict: isStrictMode });
 
   console.log('Sample html page generated!');
 })();

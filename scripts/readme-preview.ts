@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
 import * as fse from 'fs-extra';
-import { GITHUB_IMAGE_PATH_PREFIX, SVG_PATH } from './consts';
+import { GITHUB_IMAGE_PATH_PREFIX, SVG_DIR } from './consts';
 
 const START_SIGN = '<!-- PREVIEW START -->';
 const END_SIGN = '<!-- PREVIEW END -->';
@@ -28,13 +28,13 @@ const updateReadmePreview = async () => {
 
   const lines = readmeContent.split('\n');
 
-  const files = await fse.readdir(SVG_PATH);
+  const files = await fse.readdir(SVG_DIR);
   const validFiles = files.filter((f) => CHART_ID_OPTIONS.includes(path.basename(f, path.extname(f)) as ChartID));
   const previewContent = genPreviewHTML(validFiles);
   const previewLines = previewContent.split('\n');
 
-  let startSignIndex;
-  let endSignIndex;
+  let startSignIndex: number;
+  let endSignIndex: number;
   for (let i = 0; i < lines.length; i += 1) {
     if (lines[i] === START_SIGN) {
       startSignIndex = i;

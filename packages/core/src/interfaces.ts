@@ -1,8 +1,5 @@
-import { ChartID } from '@antv/knowledge';
-
 export interface ChartImageInfo {
-  id: ChartID;
+  id: string;
   name: string;
   svgCode: string;
-  g2plotCode?: string;
 }
