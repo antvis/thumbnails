@@ -3,6 +3,7 @@ import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
 import * as inquirer from 'inquirer';
 import * as fse from 'fs-extra';
 import { CODE_DIR, DEFAULT_HTMLPATH } from './consts';
+import { sortObjByKey } from './utils';
 
 interface Params {
   codeDir: string;
@@ -81,6 +82,8 @@ export const generateSampleHTML = async ({ codeDir, htmlPath, strict = false }: 
     })
   );
 
+  const sortedChartCodeMap = sortObjByKey(chartCodeMap);
+
   // generate html file
 
   const htmlFile = `<html>
@@ -91,11 +94,11 @@ export const generateSampleHTML = async ({ codeDir, htmlPath, strict = false }: 
     <script type="text/javascript" src="https://unpkg.com/@antv/g2plot@latest/dist/g2plot.min.js"></script>
   </head>
   <body>
-    ${Object.keys(chartCodeMap)
+    ${Object.keys(sortedChartCodeMap)
       .map((chartID) => `<div id="${chartID}"></div>`)
       .join('\n\t\t')}
   </body>
-  ${Object.values(chartCodeMap)
+  ${Object.values(sortedChartCodeMap)
     .map((code) => `<script>${code}</script>`)
     .join('\n')}
 </html>
