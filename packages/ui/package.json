@@ -27,7 +27,6 @@
     "ci": "run-s lint schema test build",
     "prepare:demo": "cd demo && npm install --package-lock=false",
     "start:demo": "npm run prepare:demo && cd demo && npm start",
-    "prepare": "husky install",
     "prepublishOnly": "npm run ci",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
@@ -57,6 +56,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/react": "^17.0.18",
     "eslint": "^7.32.0",
     "limit-size": "^0.1.4",
     "lint-staged": "^11.1.2",
@@ -67,7 +67,9 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "react": "^17.0.2"
+    "@antv/thumbnails": "^2.0.0-alpha.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

@@ -28,7 +28,6 @@
     "ci": "run-s lint schema test build",
     "prepare:demo": "cd demo && npm install --package-lock=false",
     "start:demo": "npm run prepare:demo && cd demo && npm start",
-    "prepare": "husky install",
     "prepublishOnly": "npm run ci",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
@@ -57,12 +56,8 @@
     "access": "public"
   },
   "license": "MIT",
-  "dependencies": {
-    "@antv/knowledge": "^1.1.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
   "devDependencies": {
+    "@antv/knowledge": "^1.1.4",
     "eslint": "^7.32.0",
     "limit-size": "^0.1.4",
     "lint-staged": "^11.1.1",
