@@ -108,18 +108,16 @@ export default App;
 
 ## Development
 
-```bash
-npm install
-```
+Run this command to setup all:
 
 ```bash
-npm run build
+npm run one-stop-setup
 ```
 
-```bash
-npm run extractsvg
-```
+Run this command and then visit <http://localhost:8299/>.
 
 ```bash
-npm run readmepreview
+npm run start:demo
 ```
+
+If you can see the demo page well, it means that all setups have been successfully completed.
