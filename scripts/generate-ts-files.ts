@@ -54,6 +54,12 @@ ${chartFiles.map((file: string) => `  ${file}: ${file.toUpperCase()}`).join(',\n
 
 export default Thumbnails;
 
+export const THUMBNAIL_IDS = [${chartFiles.map((file) => `'${file}'`).join(', ')}] as const;
+export type ThumbnailID = typeof THUMBNAIL_IDS[number];
+export function isThumbnailID(id: string): id is ThumbnailID {
+  return THUMBNAIL_IDS.includes(id as ThumbnailID);
+}
+
 export {
 ${chartFiles.map((file: string) => `  ${file.toUpperCase()}`).join(',\n')},
 };

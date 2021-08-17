@@ -1,10 +1,8 @@
 import * as React from 'react';
-// import { ChartID } from '@antv/knowledge';
-import Thumbnails from '@antv/thumbnails';
+import Thumbnails, { ThumbnailID } from '@antv/thumbnails';
 
 export interface ThumbnailProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  // chart?: ChartID;
-  chart?: string;
+  chart?: ThumbnailID;
   svg?: string;
 }
 
