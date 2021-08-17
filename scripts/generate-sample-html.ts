@@ -98,6 +98,13 @@ export const generateSampleHTML = async ({ codeDir, htmlPath, strict = false }: 
       .map((chartID) => `<div id="${chartID}"></div>`)
       .join('\n\t\t')}
   </body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('svg').forEach(function(svg) {
+        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      });
+    });
+  </script>
   ${Object.values(sortedChartCodeMap)
     .map((code) => `<script>${code}</script>`)
     .join('\n')}

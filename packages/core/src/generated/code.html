@@ -10,6 +10,13 @@
     <div id="bar_chart"></div>
   </body>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('svg').forEach(function(svg) {
+        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      });
+    });
+  </script>
+  <script>
     const { Area } = G2Plot;
 
     const area_data = [

@@ -1,7 +1,8 @@
 /* eslint-disable quotes */
 // TODO: solve eslint quotes - conflicts with prettier
 import * as React from 'react';
-import Thumbnails, { Thumbnail, BAR_CHART } from '../../packages/core/src';
+import Thumbnails, { BAR_CHART } from '../../packages/core/src';
+import { Thumbnail } from '../../packages/ui/src';
 
 class App extends React.Component<{}> {
   constructor(props: {}) {
@@ -18,7 +19,7 @@ class App extends React.Component<{}> {
             const { svgCode, name } = Thumbnails[chart];
             return (
               <div className="symbol-img-container" key={chart}>
-                <Thumbnail svg={svgCode} alt={name} width={200} />
+                <Thumbnail svg={svgCode} alt={name} width={200} height={200} />
               </div>
             );
           })}
@@ -26,14 +27,17 @@ class App extends React.Component<{}> {
 
         <br />
 
-        <code>{`<Thumbnail chart={'pie_chart'} alt={'pie'} width={200} />`}</code>
+        <code>{`<Thumbnail chart="area_chart" alt="area" width={200} />`}</code>
         <div className="symbol-img-container">
-          <Thumbnail chart={'pie_chart'} alt={'pie'} width={200} />
+          <Thumbnail chart="area_chart" alt="area" width={200} />
         </div>
 
-        <code>{"<Thumbnail svg={BAR_CHART.svgCode} alt={'pie'} width={200} />"}</code>
+        <br />
+
+        <code>{"<Thumbnail svg={BAR_CHART.svgCode} alt={'bar'} width={200} />"}</code>
         <div className="symbol-img-container">
-          <Thumbnail svg={BAR_CHART.svgCode} alt={'pie'} width={200} />
+          {console.log(BAR_CHART.svgCode)}
+          <Thumbnail svg={BAR_CHART.svgCode} alt={'bar'} width={200} />
         </div>
       </>
     );

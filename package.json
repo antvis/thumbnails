@@ -24,7 +24,9 @@
     "gen-html": "node lib/generate-sample-html.js",
     "get-svgs": "node lib/get-svgs.js",
     "gen-ts": "node lib/generate-ts-files.js",
-    "generate": "run-s build:scripts gen-html get-svgs gen-ts format"
+    "generate": "run-s build:scripts gen-html get-svgs gen-ts format",
+    "prepare:demo": "cd demo && npm install --package-lock=false",
+    "start:demo": "npm run prepare:demo && cd demo && npm start"
   },
   "devDependencies": {
     "@antv/knowledge": "^1.1.4",
