@@ -12,9 +12,9 @@
     "lib"
   ],
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx \"./\"",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx './' --ignore-pattern 'src/code/'",
     "lint-fix": "npm run lint -- --fix",
-    "prettier": " prettier --check \"**/*\" --ignore-path=../../.prettierignore",
+    "prettier": " prettier --check '**/*' --ignore-path=../../.prettierignore",
     "prettier-fix": "npm run prettier -- --write",
     "format": "npm run prettier-fix && npm run lint-fix",
     "lint-staged": "lint-staged",
