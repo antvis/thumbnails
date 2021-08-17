@@ -19,7 +19,8 @@
     "build:scripts": "rm -rf lib && tsc --pretty",
     "gen-html": "node lib/generate-sample-html.js",
     "get-svgs": "node lib/get-svgs.js",
-    "gen-ts": "node lib/generate-ts-files.js"
+    "gen-ts": "node lib/generate-ts-files.js",
+    "generate": "npm run build:scripts && npm run gen-html && npm run get-svgs && npm run gen-ts && npm run format"
   },
   "devDependencies": {
     "@antv/knowledge": "^1.1.4",
