@@ -12,4 +12,10 @@ const Thumbnails: Partial<Record<string, ChartImageInfo>> = {
 
 export default Thumbnails;
 
+export const THUMBNAIL_IDS = ['area_chart', 'bar_chart'] as const;
+export type ThumbnailID = typeof THUMBNAIL_IDS[number];
+export function isThumbnailID(id: string): id is ThumbnailID {
+  return THUMBNAIL_IDS.includes(id as ThumbnailID);
+}
+
 export { AREA_CHART, BAR_CHART };
