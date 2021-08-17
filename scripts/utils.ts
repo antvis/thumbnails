@@ -38,3 +38,17 @@ export function pureFileName(filePath: string): string {
   const extName = path.extname(filePath);
   return path.basename(filePath, extName);
 }
+
+export function sortObjByKey(unsortedObject: object) {
+  /* eslint-disable no-param-reassign */
+  const reducer = (obj: object, key: string) => {
+    obj[key] = unsortedObject[key];
+    return obj;
+  };
+  /* eslint-enable no-param-reassign */
+  const sortedObj = Object.keys(unsortedObject)
+    .sort()
+    .reduce(reducer, {});
+
+  return sortedObj;
+}
