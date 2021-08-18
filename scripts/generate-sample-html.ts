@@ -91,12 +91,23 @@ export const generateSampleHTML = async ({ codeDir, htmlPath, strict = false }: 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Code</title>
+    <style>
+      .chart_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .chart_item {
+        margin: 15px;
+      }
+    </style>
     <script type="text/javascript" src="https://unpkg.com/@antv/g2plot@latest/dist/g2plot.min.js"></script>
   </head>
   <body>
-    ${Object.keys(sortedChartCodeMap)
-      .map((chartID) => `<div id="${chartID}"></div>`)
-      .join('\n\t\t')}
+    <div class="chart_wrapper">
+      ${Object.keys(sortedChartCodeMap)
+        .map((chartID) => `<div id="${chartID}"></div>`)
+        .join('\n\t\t')}
+    </div>
   </body>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -104,6 +115,9 @@ export const generateSampleHTML = async ({ codeDir, htmlPath, strict = false }: 
         svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
       });
     });
+  </script>
+  <script>
+    const chartColors = ['#5B8FF9', '#5AD8A6', '#FF9845', '#F6BD16', '#A37FDB', '#1E9493', '#FF99C3'];
   </script>
   ${Object.values(sortedChartCodeMap)
     .map((code) => `<script>${code}</script>`)

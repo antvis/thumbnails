@@ -15,12 +15,14 @@ const area = new Area('area_chart', {
   data: area_data,
   xField: 'year',
   yField: 'value',
+  padding: [10, 20, 20, 40],
   xAxis: {
     range: [0, 1],
     label: {
       style: {
         fontSize: 12,
       },
+      offset: 4,
     },
   },
   yAxis: {
