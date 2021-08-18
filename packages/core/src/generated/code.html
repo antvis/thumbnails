@@ -3,86 +3,904 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Code</title>
+    <style>
+      .chart_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .chart_item {
+        margin: 15px;
+      }
+    </style>
     <script type="text/javascript" src="https://unpkg.com/@antv/g2plot@latest/dist/g2plot.min.js"></script>
   </head>
   <body>
-    <div id="area_chart"></div>
-    <div id="bar_chart"></div>
+    <div class="chart_wrapper">
+      <div id="area_chart" class="chart_item"></div>
+		<div id="bar_chart" class="chart_item"></div>
+		<div id="bubble_chart" class="chart_item"></div>
+		<div id="column_chart" class="chart_item"></div>
+		<div id="donut_chart" class="chart_item"></div>
+		<div id="grouped_bar_chart" class="chart_item"></div>
+		<div id="grouped_column_chart" class="chart_item"></div>
+		<div id="heatmap" class="chart_item"></div>
+		<div id="histogram" class="chart_item"></div>
+		<div id="line_chart" class="chart_item"></div>
+		<div id="percent_stacked_area_chart" class="chart_item"></div>
+		<div id="percent_stacked_bar_chart" class="chart_item"></div>
+		<div id="percent_stacked_column_chart" class="chart_item"></div>
+		<div id="pie_chart" class="chart_item"></div>
+		<div id="radar_chart" class="chart_item"></div>
+		<div id="scatter_plot" class="chart_item"></div>
+		<div id="stacked_area_chart" class="chart_item"></div>
+		<div id="stacked_bar_chart" class="chart_item"></div>
+		<div id="stacked_column_chart" class="chart_item"></div>
+    </div>
   </body>
   <script>
-    const { Area } = G2Plot;
-
-    const area_data = [
-      { year: 2016, value: 150 },
-      { year: 2017, value: 90 },
-      { year: 2018, value: 180 },
-      { year: 2019, value: 170 },
-      { year: 2020, value: 240 },
-    ];
-
-    const area = new Area('area_chart', {
-      height: 200,
-      width: 200,
-      autoFit: false,
-      data: area_data,
-      xField: 'year',
-      yField: 'value',
-      xAxis: {
-        range: [0, 1],
-        label: {
-          style: {
-            fontSize: 12,
-          },
-        },
-      },
-      yAxis: {
-        tickInterval: 100,
-        label: {
-          style: {
-            fontSize: 12,
-          },
-        },
-      },
-      renderer: 'svg',
-    });
-
-    area.render();
+    const chartColors = ['#5B8FF9', '#5AD8A6', '#FF9845', '#F6BD16', '#A37FDB', '#1E9493', '#FF99C3'];
   </script>
-  <script>
-    const { Bar } = G2Plot;
+  <script>const { Area } = G2Plot;
 
-    const bar_data = [
-      { category: 'A', value: 140 },
-      { category: 'B', value: 115 },
-      { category: 'C', value: 260 },
-      { category: 'D', value: 220 },
-    ];
+const area_data = [
+  { year: 2016, value: 150 },
+  { year: 2017, value: 90 },
+  { year: 2018, value: 180 },
+  { year: 2019, value: 170 },
+  { year: 2020, value: 240 },
+];
 
-    const bar = new Bar('bar_chart', {
-      height: 200,
-      width: 200,
-      autoFit: false,
-      data: bar_data,
-      xField: 'value',
-      yField: 'category',
-      xAxis: {
-        tickInterval: 100,
-        label: {
-          style: {
-            fontSize: 12,
-          },
+const area = new Area('area_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: area_data,
+  xField: 'year',
+  yField: 'value',
+  padding: [10, 20, 20, 40],
+  xAxis: {
+    range: [0, 1],
+    label: {
+      style: {
+        fontSize: 12,
+      },
+      offset: 4,
+    },
+  },
+  yAxis: {
+    tickInterval: 100,
+    label: {
+      style: {
+        fontSize: 12,
+      },
+    },
+  },
+  renderer: 'svg',
+});
+
+area.render();
+</script>
+<script>const { Bar } = G2Plot;
+
+const bar_data = [
+  { category: 'A', value: 140 },
+  { category: 'B', value: 115 },
+  { category: 'C', value: 260 },
+  { category: 'D', value: 220 },
+];
+
+const bar = new Bar('bar_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: bar_data,
+  xField: 'value',
+  yField: 'category',
+  padding: [10, 20, 20, 20],
+  xAxis: {
+    tickInterval: 100,
+    label: {
+      style: {
+        fontSize: 12,
+      },
+      offset: 4,
+    },
+  },
+  yAxis: {
+    label: {
+      style: {
+        fontSize: 12,
+      },
+    },
+  },
+  minColumnWidth: 20,
+  maxColumnWidth: 20,
+});
+
+bar.render();
+</script>
+<script>const { Scatter: BubbleScatter } = G2Plot;
+const bubbleMap = {
+  A: 0,
+  B: 1,
+  C: 2,
+  D: 3,
+  E: 4,
+  F: 5,
+  G: 6,
+};
+// 数据更新于 2021.01.09
+const bubble_scatter_data = [
+  { HA: 'A', Team: 'Torino', xGconceded: 5.3, Shotconceded: 200, Result: 17 },
+  { HA: 'B', Team: 'Atalanta', xGconceded: 4.2, Shotconceded: 100, Result: 50 },
+  { HA: 'C', Team: 'Milan', xGconceded: 7.4, Shotconceded: 220, Result: 50 },
+  { HA: 'D', Team: 'Chievo', xGconceded: 7.4, Shotconceded: 100, Result: 50 },
+  { HA: 'E', Team: 'Bologna', xGconceded: 3.7, Shotconceded: 230, Result: 25 },
+  { HA: 'F', Team: 'Frosinone', xGconceded: 6.4, Shotconceded: 160, Result: 10 },
+  { HA: 'G', Team: 'Lazio', xGconceded: 5.5, Shotconceded: 160, Result: 15 },
+];
+
+const bubbleScatterPlot = new BubbleScatter('bubble_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: bubble_scatter_data,
+  xField: 'xGconceded',
+  yField: 'Shotconceded',
+  colorField: 'HA',
+  sizeField: 'Result',
+  xAxis: {
+    min: 2,
+    max: 10,
+    label: null,
+    line: null,
+  },
+  yAxis: {
+    min: 0,
+    max: 300,
+    label: null,
+    line: null,
+    grid: null,
+  },
+  size: [8, 40],
+  shape: 'circle',
+  color: chartColors,
+  pointStyle: (item) => {
+    return {
+      fillOpacity: 0.6,
+      stroke: chartColors[bubbleMap[item['HA']]],
+      lineWidth: 1,
+      strokeOpacity: 1,
+    };
+  },
+  // pointStyle: {
+  //   fillOpacity: 0.6,
+  // },
+  legend: false,
+});
+
+bubbleScatterPlot.render();
+</script>
+<script>const { Column } = G2Plot;
+
+const column_data = [
+  { category: 'A', value: 140 },
+  { category: 'B', value: 115 },
+  { category: 'C', value: 260 },
+  { category: 'D', value: 220 },
+];
+
+const column = new Column('column_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: column_data,
+  xField: 'category',
+  yField: 'value',
+  xAxis: {
+    label: {
+      autoHide: true,
+      autoRotate: false,
+    },
+  },
+  minColumnWidth: 20,
+  maxColumnWidth: 20,
+});
+
+column.render();
+</script>
+<script>const { Pie: DonutPie } = G2Plot;
+
+const donut_pie_data = [
+  { type: 'A', value: 27 },
+  { type: 'B', value: 36 },
+  { type: 'C', value: 12 },
+];
+
+const donutPie = new DonutPie('donut_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  padding: 20,
+  data: donut_pie_data,
+  angleField: 'value',
+  colorField: 'type',
+  radius: 1,
+  innerRadius: 0.6,
+  color: chartColors,
+  label: {
+    type: 'inner',
+    offset: '-50%',
+    content: '{name}',
+    autoRotate: false,
+    style: {
+      textAlign: 'center',
+      fontSize: 14,
+    },
+  },
+  legend: false,
+  statistic: {
+    title: false,
+    content: {
+      formatter: () => '',
+    },
+  },
+});
+
+donutPie.render();
+</script>
+<script>const { Bar: GroupedBar } = G2Plot;
+
+const grouped_bar_data = [
+  { name: 'London', month: 'A', rain: 140 },
+  { name: 'London', month: 'B', rain: 115 },
+  { name: 'London', month: 'C', rain: 260 },
+  { name: 'London', month: 'D', rain: 220 },
+  { name: 'Berlin', month: 'A', rain: 160 },
+  { name: 'Berlin', month: 'B', rain: 150 },
+  { name: 'Berlin', month: 'C', rain: 290 },
+  { name: 'Berlin', month: 'D', rain: 260 },
+];
+
+const groupedBar = new GroupedBar('grouped_bar_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: grouped_bar_data,
+  isGroup: true,
+  xField: 'rain',
+  yField: 'month',
+  seriesField: 'name',
+  label: null,
+  legend: false,
+});
+
+groupedBar.render();
+</script>
+<script>const { Column: GroupedColumn } = G2Plot;
+
+const grouped_column_data = [
+  { name: 'London', month: 'A', rain: 140 },
+  { name: 'London', month: 'B', rain: 115 },
+  { name: 'London', month: 'C', rain: 260 },
+  { name: 'London', month: 'D', rain: 220 },
+  { name: 'Berlin', month: 'A', rain: 160 },
+  { name: 'Berlin', month: 'B', rain: 150 },
+  { name: 'Berlin', month: 'C', rain: 290 },
+  { name: 'Berlin', month: 'D', rain: 260 },
+];
+
+const groupedColumn = new GroupedColumn('grouped_column_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: grouped_column_data,
+  isGroup: true,
+  xField: 'month',
+  yField: 'rain',
+  seriesField: 'name',
+  label: null,
+  legend: false,
+});
+
+groupedColumn.render();
+</script>
+<script>const { Heatmap } = G2Plot;
+
+const heatmap_data = [
+  { name: '4', year: 'A', rain: 0 },
+  { name: '4', year: 'B', rain: 80 },
+  { name: '4', year: 'C', rain: 80 },
+  { name: '4', year: 'D', rain: 80 },
+  { name: '5', year: 'A', rain: 80 },
+  { name: '5', year: 'B', rain: 10 },
+  { name: '5', year: 'C', rain: 80 },
+  { name: '5', year: 'D', rain: 80 },
+  { name: '6', year: 'A', rain: 30 },
+  { name: '6', year: 'B', rain: 100 },
+  { name: '6', year: 'C', rain: 60 },
+  { name: '6', year: 'D', rain: 60 },
+  { name: '7', year: 'A', rain: 100 },
+  { name: '7', year: 'B', rain: 80 },
+  { name: '7', year: 'C', rain: 60 },
+  { name: '7', year: 'D', rain: 80 },
+  { name: '8', year: 'A', rain: 100 },
+  { name: '8', year: 'B', rain: 10 },
+  { name: '8', year: 'C', rain: 80 },
+  { name: '8', year: 'D', rain: 10 },
+  { name: '9', year: 'A', rain: 60 },
+  { name: '9', year: 'B', rain: 80 },
+  { name: '9', year: 'C', rain: 60 },
+  { name: '9', year: 'D', rain: 30 },
+  { name: '10', year: 'A', rain: 80 },
+  { name: '10', year: 'B', rain: 10 },
+  { name: '10', year: 'C', rain: 10 },
+  { name: '10', year: 'D', rain: 80 },
+];
+
+const heatmap = new Heatmap('heatmap', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: heatmap_data,
+  isStack: true,
+  padding: 20,
+  xField: 'year',
+  yField: 'name',
+  colorField: 'rain',
+  color: ['#436FD4', '#5B8FF9', '#87B3FF', '#B0D0FF', '#D9E9FF'],
+  label: null,
+  legend: false,
+  areaStyle: {
+    fillOpacity: 0.7,
+  },
+  heatmapStyle: {
+    stroke: '#fff',
+    lineWidth: 4,
+  },
+});
+
+heatmap.render();
+</script>
+<script>const { Histogram } = G2Plot;
+
+const histogram_data = [
+  {
+    value: 2,
+  },
+  {
+    value: 2,
+  },
+  {
+    value: 3,
+  },
+  {
+    value: 3,
+  },
+  {
+    value: 3,
+  },
+  {
+    value: 4,
+  },
+  {
+    value: 4,
+  },
+  {
+    value: 4,
+  },
+  {
+    value: 4,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 7,
+  },
+  {
+    value: 8,
+  },
+  {
+    value: 8,
+  },
+  {
+    value: 8,
+  },
+  {
+    value: 9,
+  },
+];
+
+const histogram = new Histogram('histogram', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: histogram_data,
+  binField: 'value',
+  binWidth: 1,
+  yAxis: {
+    min: 0,
+    max: 12,
+    tickCount: 3,
+  },
+});
+
+histogram.render();
+</script>
+<script>const { Line } = G2Plot;
+
+const line_data = [
+  { name: 'London', year: '2016', rain: 130 },
+  { name: 'London', year: '2017', rain: 115 },
+  { name: 'London', year: '2018', rain: 160 },
+  { name: 'London', year: '2019', rain: 140 },
+  { name: 'London', year: '2020', rain: 180 },
+  { name: 'Berlin', year: '2016', rain: 160 },
+  { name: 'Berlin', year: '2017', rain: 90 },
+  { name: 'Berlin', year: '2018', rain: 180 },
+  { name: 'Berlin', year: '2019', rain: 170 },
+  { name: 'Berlin', year: '2020', rain: 240 },
+];
+
+const line = new Line('line_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: line_data,
+  xField: 'year',
+  yField: 'rain',
+  seriesField: 'name',
+  xAxis: {
+    range: [0, 1],
+    label: {
+      autoHide: true,
+      autoRotate: false,
+    },
+  },
+  yAxis: {
+    max: 300,
+    tickCount: 3,
+  },
+  legend: false,
+});
+
+line.render();
+</script>
+<script>const { Area: PercentStackedArea } = G2Plot;
+
+const percent_stacked_area_data = [
+  { country: 'Europe', year: '2016', value: 35 },
+  { country: 'Europe', year: '2017', value: 52 },
+  { country: 'Europe', year: '2018', value: 30 },
+  { country: 'Europe', year: '2019', value: 40 },
+  { country: 'Europe', year: '2020', value: 10 },
+  { country: 'Africa', year: '2016', value: 39 },
+  { country: 'Africa', year: '2017', value: 24 },
+  { country: 'Africa', year: '2018', value: 25 },
+  { country: 'Africa', year: '2019', value: 20 },
+  { country: 'Africa', year: '2020', value: 40 },
+  { country: 'Asia', year: '2016', value: 26 },
+  { country: 'Asia', year: '2017', value: 24 },
+  { country: 'Asia', year: '2018', value: 45 },
+  { country: 'Asia', year: '2019', value: 40 },
+  { country: 'Asia', year: '2020', value: 50 },
+];
+
+const percentStackedArea = new PercentStackedArea('percent_stacked_area_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: percent_stacked_area_data,
+  color: chartColors,
+  xField: 'year',
+  yField: 'value',
+  seriesField: 'country',
+  areaStyle: {
+    fillOpacity: 0.3,
+  },
+  padding: [10, 20, 24, 40],
+  isPercent: true,
+  startOnZero: true,
+  xAxis: {
+    range: [0, 1],
+  },
+  yAxis: {
+    label: {
+      formatter: (value) => {
+        return value * 100 + '%';
+      },
+    },
+    tickCount: 3,
+  },
+  renderer: 'svg',
+  legend: false,
+});
+
+percentStackedArea.render();
+</script>
+<script>const { Bar: PercentStackedBar } = G2Plot;
+
+const percent_stacked_bar_data = [
+  { country: 'Asia', year: 'A', value: 48 },
+  { country: 'Asia', year: 'B', value: 52 },
+  { country: 'Asia', year: 'C', value: 10 },
+  { country: 'Asia', year: 'D', value: 20 },
+  { country: 'Africa', year: 'A', value: 26 },
+  { country: 'Africa', year: 'B', value: 24 },
+  { country: 'Africa', year: 'C', value: 45 },
+  { country: 'Africa', year: 'D', value: 40 },
+  { country: 'Europe', year: 'A', value: 26 },
+  { country: 'Europe', year: 'B', value: 24 },
+  { country: 'Europe', year: 'C', value: 45 },
+  { country: 'Europe', year: 'D', value: 40 },
+];
+
+const percentStackedBar = new PercentStackedBar('percent_stacked_bar_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: percent_stacked_bar_data,
+  maxBarWidth: 16,
+  color: chartColors,
+  xField: 'value',
+  yField: 'year',
+  seriesField: 'country',
+  isPercent: true,
+  isStack: true,
+  legend: false,
+  xAxis: {
+    label: {
+      formatter: (value) => {
+        return value * 100 + '%';
+      },
+    },
+    tickCount: 3,
+  },
+});
+
+percentStackedBar.render();
+</script>
+<script>const { Column: PercentStackedColumn } = G2Plot;
+
+const percent_stacked_column_data = [
+  { country: 'Europe', year: 'A', value: 48 },
+  { country: 'Europe', year: 'B', value: 52 },
+  { country: 'Europe', year: 'C', value: 10 },
+  { country: 'Europe', year: 'D', value: 20 },
+  { country: 'Africa', year: 'A', value: 26 },
+  { country: 'Africa', year: 'B', value: 24 },
+  { country: 'Africa', year: 'C', value: 45 },
+  { country: 'Africa', year: 'D', value: 40 },
+  { country: 'Asia', year: 'A', value: 26 },
+  { country: 'Asia', year: 'B', value: 24 },
+  { country: 'Asia', year: 'C', value: 45 },
+  { country: 'Asia', year: 'D', value: 40 },
+];
+
+const percentStackedColumn = new PercentStackedColumn('percent_stacked_column_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: percent_stacked_column_data,
+  color: chartColors,
+  xField: 'year',
+  yField: 'value',
+  seriesField: 'country',
+  maxColumnWidth: 16,
+  isPercent: true,
+  isStack: true,
+  yAxis: {
+    label: {
+      formatter: (value) => {
+        return value * 100 + '%';
+      },
+    },
+    tickCount: 3,
+  },
+  legend: false,
+});
+
+percentStackedColumn.render();
+</script>
+<script>const { Pie } = G2Plot;
+
+const pie_data = [
+  { type: 'A', value: 35 },
+  { type: 'B', value: 50 },
+  { type: 'C', value: 15 },
+];
+
+const pie = new Pie('pie_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: pie_data,
+  padding: 20,
+  angleField: 'value',
+  colorField: 'type',
+  color: chartColors,
+  label: {
+    type: 'inner',
+    offset: '-50%',
+    content: '{name}',
+    autoRotate: false,
+    style: {
+      textAlign: 'center',
+      fontSize: 14,
+    },
+  },
+  legend: false,
+});
+
+pie.render();
+</script>
+<script>const { Radar } = G2Plot;
+
+// 数据更新于 2021.01.09
+const radar_data = [
+  { name: 'A', star: 90 },
+  { name: 'B', star: 75 },
+  { name: 'C', star: 20 },
+  { name: 'D', star: 70 },
+  { name: 'E', star: 50 },
+  { name: 'F', star: 100 },
+];
+
+const radarPlot = new Radar('radar_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: radar_data.map((d) => ({ ...d, star: Math.sqrt(d.star) })),
+  xField: 'name',
+  yField: 'star',
+  appendPadding: [0, 10, 0, 10],
+  meta: {
+    star: {
+      alias: 'star 数量',
+      min: 0,
+      nice: true,
+      formatter: (v) => Number(v).toFixed(2),
+    },
+  },
+  xAxis: {
+    line: null,
+    tickLine: null,
+    grid: {
+      line: {
+        style: {
+          lineDash: null,
         },
       },
-      yAxis: {
-        label: {
-          style: {
-            fontSize: 12,
-          },
+    },
+  },
+  yAxis: {
+    line: null,
+    tickLine: null,
+    label: false,
+    grid: {
+      line: {
+        type: 'line',
+        style: {
+          lineDash: null,
         },
       },
-      renderer: 'svg',
-    });
+    },
+  },
+  shape: 'circle',
+  // 开启辅助点
+  point: {
+    size: 3,
+    color: '#5B8FF9',
+    style: {
+      fill: '#5B8FF9',
+    },
+  },
+  area: {},
+});
 
-    bar.render();
-  </script>
+radarPlot.render();
+</script>
+<script>const { Scatter } = G2Plot;
+
+// 数据更新于 2021.01.09
+const scatter_data = [
+  { HA: 'A', Team: 'Torino', xGconceded: 3, Shotconceded: 90, Result: '3' },
+  { HA: 'H', Team: 'Atalanta', xGconceded: 3.8, Shotconceded: 190, Result: '1' },
+  { HA: 'A', Team: 'Milan', xGconceded: 4.3, Shotconceded: 130, Result: '0' },
+  { HA: 'H', Team: 'Chievo', xGconceded: 5.7, Shotconceded: 180, Result: '1' },
+  { HA: 'A', Team: 'Bologna', xGconceded: 6, Shotconceded: 240, Result: 0 },
+  { HA: 'H', Team: 'Frosinone', xGconceded: 7, Shotconceded: 200, Result: '3' },
+  { HA: 'H', Team: 'Lazio', xGconceded: 8, Shotconceded: 120, Result: '3' },
+  { HA: 'A', Team: 'Empoli', xGconceded: 9, Shotconceded: 210, Result: '3' },
+];
+
+const scatterPlot = new Scatter('scatter_plot', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: scatter_data,
+  xField: 'xGconceded',
+  yField: 'Shotconceded',
+  pointStyle: {
+    fill: '#5B8FF9',
+  },
+  size: 6,
+  xAxis: {
+    min: 2,
+    max: 10,
+  },
+  yAxis: {
+    min: 0,
+    max: 300,
+  },
+});
+
+scatterPlot.render();
+</script>
+<script>const { Area: StackedArea } = G2Plot;
+
+const stacked_area_data = [
+  { name: 'London', year: '2016', rain: 65 },
+  { name: 'London', year: '2017', rain: 57 },
+  { name: 'London', year: '2018', rain: 90 },
+  { name: 'London', year: '2019', rain: 85 },
+  { name: 'London', year: '2020', rain: 120 },
+  { name: 'Berlin', year: '2016', rain: 80 },
+  { name: 'Berlin', year: '2017', rain: 45 },
+  { name: 'Berlin', year: '2018', rain: 90 },
+  { name: 'Berlin', year: '2019', rain: 85 },
+  { name: 'Berlin', year: '2020', rain: 120 },
+];
+
+const stackedArea = new StackedArea('stacked_area_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: stacked_area_data,
+  isStack: true,
+  xField: 'year',
+  yField: 'rain',
+  seriesField: 'name',
+  label: null,
+  legend: false,
+  color: chartColors,
+  xAxis: {
+    range: [0, 1],
+  },
+  areaStyle: {
+    fillOpacity: 0.3,
+  },
+  yAxis: {
+    max: 300,
+    tickCount: 3,
+  },
+});
+
+stackedArea.render();
+</script>
+<script>const { Bar: StackedBar } = G2Plot;
+
+const stacked_bar_data = [
+  { name: 'London', month: 'A', rain: 80 },
+  { name: 'London', month: 'B', rain: 60 },
+  { name: 'London', month: 'C', rain: 130 },
+  { name: 'London', month: 'D', rain: 120 },
+  { name: 'Berlin', month: 'A', rain: 80 },
+  { name: 'Berlin', month: 'B', rain: 60 },
+  { name: 'Berlin', month: 'C', rain: 130 },
+  { name: 'Berlin', month: 'D', rain: 120 },
+];
+
+const stackedBar = new StackedBar('stacked_bar_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: stacked_bar_data,
+  isStack: true,
+  xField: 'rain',
+  yField: 'month',
+  seriesField: 'name',
+  label: null,
+  legend: false,
+  maxBarWidth: 16,
+});
+
+stackedBar.render();
+</script>
+<script>const { Column: StackedColumn } = G2Plot;
+
+const stacked_column_data = [
+  { name: 'London', month: 'A', rain: 80 },
+  { name: 'London', month: 'B', rain: 60 },
+  { name: 'London', month: 'C', rain: 130 },
+  { name: 'London', month: 'D', rain: 120 },
+  { name: 'Berlin', month: 'A', rain: 80 },
+  { name: 'Berlin', month: 'B', rain: 60 },
+  { name: 'Berlin', month: 'C', rain: 130 },
+  { name: 'Berlin', month: 'D', rain: 120 },
+];
+
+const stackedColumn = new StackedColumn('stacked_column_chart', {
+  height: 200,
+  width: 200,
+  autoFit: false,
+  data: stacked_column_data,
+  isStack: true,
+  xField: 'month',
+  yField: 'rain',
+  seriesField: 'name',
+  label: null,
+  legend: false,
+  maxColumnWidth: 16,
+});
+
+stackedColumn.render();
+</script>
 </html>

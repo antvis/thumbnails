@@ -14,12 +14,14 @@ const bar = new Bar('bar_chart', {
   data: bar_data,
   xField: 'value',
   yField: 'category',
+  padding: [10, 20, 20, 20],
   xAxis: {
     tickInterval: 100,
     label: {
       style: {
         fontSize: 12,
       },
+      offset: 4,
     },
   },
   yAxis: {
@@ -29,7 +31,8 @@ const bar = new Bar('bar_chart', {
       },
     },
   },
-  renderer: 'svg',
+  minColumnWidth: 20,
+  maxColumnWidth: 20,
 });
 
 bar.render();
