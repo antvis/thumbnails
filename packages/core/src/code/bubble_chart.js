@@ -8,7 +8,7 @@ const bubbleMap = {
   F: 5,
   G: 6,
 };
-// 数据更新于 2021.01.09
+
 const bubble_scatter_data = [
   { HA: 'A', Team: 'Torino', xGconceded: 5.3, Shotconceded: 200, Result: 17 },
   { HA: 'B', Team: 'Atalanta', xGconceded: 4.2, Shotconceded: 100, Result: 50 },
@@ -52,9 +52,6 @@ const bubbleScatterPlot = new BubbleScatter('bubble_chart', {
       strokeOpacity: 1,
     };
   },
-  // pointStyle: {
-  //   fillOpacity: 0.6,
-  // },
   legend: false,
 });
 
