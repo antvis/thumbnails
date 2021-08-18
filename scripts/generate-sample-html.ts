@@ -105,7 +105,7 @@ export const generateSampleHTML = async ({ codeDir, htmlPath, strict = false }: 
   <body>
     <div class="chart_wrapper">
       ${Object.keys(sortedChartCodeMap)
-        .map((chartID) => `<div id="${chartID}"></div>`)
+        .map((chartID) => `<div id="${chartID}" class="chart_item"></div>`)
         .join('\n\t\t')}
     </div>
   </body>
