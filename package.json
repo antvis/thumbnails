@@ -38,7 +38,7 @@
     "setup:demo": "cd demo && npm install --package-lock=false",
     "start:demo": "npm run setup:demo && cd demo && npm start",
     "boot": "lerna bootstrap",
-    "one-stop-setup": "npm install && run-s boot build:scripts generate build:packages setup:demo"
+    "one-stop-setup": "npm install --package-lock=false && run-s boot build:scripts generate build:packages setup:demo"
   },
   "devDependencies": {
     "@antv/knowledge": "^1.1.4",
