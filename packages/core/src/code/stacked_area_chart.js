@@ -1,4 +1,4 @@
-const { Area: StackedArea } = G2Plot;
+const { Area: StackedArea } = G2Plot; // REQUIRED: import from G2Plot
 
 const stacked_area_data = [
   { name: 'London', year: '2016', rain: 65 },
@@ -35,6 +35,8 @@ const stackedArea = new StackedArea('stacked_area_chart', {
     max: 300,
     tickCount: 3,
   },
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 stackedArea.render();

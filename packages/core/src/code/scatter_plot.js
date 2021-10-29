@@ -1,6 +1,5 @@
-const { Scatter } = G2Plot;
+const { Scatter } = G2Plot; // REQUIRED: import from G2Plot
 
-// 数据更新于 2021.01.09
 const scatter_data = [
   { HA: 'A', Team: 'Torino', xGconceded: 3, Shotconceded: 90, Result: '3' },
   { HA: 'H', Team: 'Atalanta', xGconceded: 3.8, Shotconceded: 190, Result: '1' },
@@ -31,6 +30,8 @@ const scatterPlot = new Scatter('scatter_plot', {
     min: 0,
     max: 300,
   },
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 scatterPlot.render();

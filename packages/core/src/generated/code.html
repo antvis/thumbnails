@@ -48,7 +48,7 @@
     const chartColors = ['#5B8FF9', '#5AD8A6', '#FF9845', '#F6BD16', '#A37FDB', '#1E9493', '#FF99C3'];
   </script>
   <script>
-    const { Area } = G2Plot;
+    const { Area } = G2Plot; // REQUIRED: import from G2Plot
 
     const area_data = [
       { year: 2016, value: 150 },
@@ -83,13 +83,14 @@
           },
         },
       },
-      renderer: 'svg',
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     area.render();
   </script>
   <script>
-    const { Bar } = G2Plot;
+    const { Bar } = G2Plot; // REQUIRED: import from G2Plot
 
     const bar_data = [
       { category: 'A', value: 140 },
@@ -124,12 +125,15 @@
       },
       minColumnWidth: 20,
       maxColumnWidth: 20,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     bar.render();
   </script>
   <script>
-    const { Scatter: BubbleScatter } = G2Plot;
+    const { Scatter: BubbleScatter } = G2Plot; // REQUIRED: import from G2Plot
+
     const bubbleMap = {
       A: 0,
       B: 1,
@@ -178,18 +182,20 @@
       pointStyle: (item) => {
         return {
           fillOpacity: 0.6,
-          stroke: chartColors[bubbleMap[item['HA']]],
+          stroke: chartColors[bubbleMap[item.HA]],
           lineWidth: 1,
           strokeOpacity: 1,
         };
       },
       legend: false,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     bubbleScatterPlot.render();
   </script>
   <script>
-    const { Column } = G2Plot;
+    const { Column } = G2Plot; // REQUIRED: import from G2Plot
 
     const column_data = [
       { category: 'A', value: 140 },
@@ -213,12 +219,14 @@
       },
       minColumnWidth: 20,
       maxColumnWidth: 20,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     column.render();
   </script>
   <script>
-    const { Pie: DonutPie } = G2Plot;
+    const { Pie: DonutPie } = G2Plot; // REQUIRED: import from G2Plot
 
     const donut_pie_data = [
       { type: 'A', value: 27 },
@@ -254,12 +262,14 @@
           formatter: () => '',
         },
       },
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     donutPie.render();
   </script>
   <script>
-    const { Bar: GroupedBar } = G2Plot;
+    const { Bar: GroupedBar } = G2Plot; // REQUIRED: import from G2Plot
 
     const grouped_bar_data = [
       { name: 'London', month: 'A', rain: 140 },
@@ -283,12 +293,14 @@
       seriesField: 'name',
       label: null,
       legend: false,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     groupedBar.render();
   </script>
   <script>
-    const { Column: GroupedColumn } = G2Plot;
+    const { Column: GroupedColumn } = G2Plot; // REQUIRED: import from G2Plot
 
     const grouped_column_data = [
       { name: 'London', month: 'A', rain: 140 },
@@ -312,12 +324,14 @@
       seriesField: 'name',
       label: null,
       legend: false,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     groupedColumn.render();
   </script>
   <script>
-    const { Heatmap } = G2Plot;
+    const { Heatmap } = G2Plot; // REQUIRED: import from G2Plot
 
     const heatmap_data = [
       { name: '4', year: 'A', rain: 0 },
@@ -370,125 +384,53 @@
         stroke: '#fff',
         lineWidth: 4,
       },
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     heatmap.render();
   </script>
   <script>
-    const { Histogram } = G2Plot;
+    const { Histogram } = G2Plot; // REQUIRED: import from G2Plot
 
     const histogram_data = [
-      {
-        value: 2,
-      },
-      {
-        value: 2,
-      },
-      {
-        value: 3,
-      },
-      {
-        value: 3,
-      },
-      {
-        value: 3,
-      },
-      {
-        value: 4,
-      },
-      {
-        value: 4,
-      },
-      {
-        value: 4,
-      },
-      {
-        value: 4,
-      },
-      {
-        value: 5,
-      },
-      {
-        value: 5,
-      },
-      {
-        value: 5,
-      },
-      {
-        value: 5,
-      },
-      {
-        value: 5,
-      },
-      {
-        value: 5,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 6,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 7,
-      },
-      {
-        value: 8,
-      },
-      {
-        value: 8,
-      },
-      {
-        value: 8,
-      },
-      {
-        value: 9,
-      },
+      { value: 2 },
+      { value: 2 },
+      { value: 3 },
+      { value: 3 },
+      { value: 3 },
+      { value: 4 },
+      { value: 4 },
+      { value: 4 },
+      { value: 4 },
+      { value: 5 },
+      { value: 5 },
+      { value: 5 },
+      { value: 5 },
+      { value: 5 },
+      { value: 5 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 6 },
+      { value: 7 },
+      { value: 7 },
+      { value: 7 },
+      { value: 7 },
+      { value: 7 },
+      { value: 7 },
+      { value: 7 },
+      { value: 7 },
+      { value: 8 },
+      { value: 8 },
+      { value: 8 },
+      { value: 9 },
     ];
 
     const histogram = new Histogram('histogram', {
@@ -498,17 +440,15 @@
       data: histogram_data,
       binField: 'value',
       binWidth: 1,
-      yAxis: {
-        min: 0,
-        max: 12,
-        tickCount: 3,
-      },
+      yAxis: { min: 0, max: 12, tickCount: 3 },
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     histogram.render();
   </script>
   <script>
-    const { Line } = G2Plot;
+    const { Line } = G2Plot; // REQUIRED: import from G2Plot
 
     const line_data = [
       { name: 'London', year: '2016', rain: 130 },
@@ -543,12 +483,14 @@
         tickCount: 3,
       },
       legend: false,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     line.render();
   </script>
   <script>
-    const { Area: PercentStackedArea } = G2Plot;
+    const { Area: PercentStackedArea } = G2Plot; // REQUIRED: import from G2Plot
 
     const percent_stacked_area_data = [
       { country: 'Europe', year: '2016', value: 35 },
@@ -589,19 +531,20 @@
       yAxis: {
         label: {
           formatter: (value) => {
-            return value * 100 + '%';
+            return `${value * 100}%`;
           },
         },
         tickCount: 3,
       },
-      renderer: 'svg',
       legend: false,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     percentStackedArea.render();
   </script>
   <script>
-    const { Bar: PercentStackedBar } = G2Plot;
+    const { Bar: PercentStackedBar } = G2Plot; // REQUIRED: import from G2Plot
 
     const percent_stacked_bar_data = [
       { country: 'Asia', year: 'A', value: 48 },
@@ -634,17 +577,19 @@
       xAxis: {
         label: {
           formatter: (value) => {
-            return value * 100 + '%';
+            return `${value * 100}%`;
           },
         },
         tickCount: 3,
       },
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     percentStackedBar.render();
   </script>
   <script>
-    const { Column: PercentStackedColumn } = G2Plot;
+    const { Column: PercentStackedColumn } = G2Plot; // REQUIRED: import from G2Plot
 
     const percent_stacked_column_data = [
       { country: 'Europe', year: 'A', value: 48 },
@@ -676,18 +621,20 @@
       yAxis: {
         label: {
           formatter: (value) => {
-            return value * 100 + '%';
+            return `${value * 100}%`;
           },
         },
         tickCount: 3,
       },
       legend: false,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     percentStackedColumn.render();
   </script>
   <script>
-    const { Pie } = G2Plot;
+    const { Pie } = G2Plot; // REQUIRED: import from G2Plot
 
     const pie_data = [
       { type: 'A', value: 35 },
@@ -715,14 +662,15 @@
         },
       },
       legend: false,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     pie.render();
   </script>
   <script>
-    const { Radar } = G2Plot;
+    const { Radar } = G2Plot; // REQUIRED: import from G2Plot
 
-    // 数据更新于 2021.01.09
     const radar_data = [
       { name: 'A', star: 90 },
       { name: 'B', star: 75 },
@@ -742,7 +690,7 @@
       appendPadding: [0, 10, 0, 10],
       meta: {
         star: {
-          alias: 'star 数量',
+          alias: 'star count',
           min: 0,
           nice: true,
           formatter: (v) => Number(v).toFixed(2),
@@ -773,7 +721,6 @@
         },
       },
       shape: 'circle',
-      // 开启辅助点
       point: {
         size: 3,
         color: '#5B8FF9',
@@ -782,14 +729,15 @@
         },
       },
       area: {},
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     radarPlot.render();
   </script>
   <script>
-    const { Scatter } = G2Plot;
+    const { Scatter } = G2Plot; // REQUIRED: import from G2Plot
 
-    // 数据更新于 2021.01.09
     const scatter_data = [
       { HA: 'A', Team: 'Torino', xGconceded: 3, Shotconceded: 90, Result: '3' },
       { HA: 'H', Team: 'Atalanta', xGconceded: 3.8, Shotconceded: 190, Result: '1' },
@@ -820,12 +768,14 @@
         min: 0,
         max: 300,
       },
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     scatterPlot.render();
   </script>
   <script>
-    const { Area: StackedArea } = G2Plot;
+    const { Area: StackedArea } = G2Plot; // REQUIRED: import from G2Plot
 
     const stacked_area_data = [
       { name: 'London', year: '2016', rain: 65 },
@@ -862,12 +812,14 @@
         max: 300,
         tickCount: 3,
       },
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     stackedArea.render();
   </script>
   <script>
-    const { Bar: StackedBar } = G2Plot;
+    const { Bar: StackedBar } = G2Plot; // REQUIRED: import from G2Plot
 
     const stacked_bar_data = [
       { name: 'London', month: 'A', rain: 80 },
@@ -892,12 +844,14 @@
       label: null,
       legend: false,
       maxBarWidth: 16,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     stackedBar.render();
   </script>
   <script>
-    const { Column: StackedColumn } = G2Plot;
+    const { Column: StackedColumn } = G2Plot; // REQUIRED: import from G2Plot
 
     const stacked_column_data = [
       { name: 'London', month: 'A', rain: 80 },
@@ -922,6 +876,8 @@
       label: null,
       legend: false,
       maxColumnWidth: 16,
+      animation: false, // REQUIRED: NO animation
+      renderer: 'svg', // REQUIRED: render into svg
     });
 
     stackedColumn.render();

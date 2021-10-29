@@ -1,4 +1,4 @@
-const { Pie: DonutPie } = G2Plot;
+const { Pie: DonutPie } = G2Plot; // REQUIRED: import from G2Plot
 
 const donut_pie_data = [
   { type: 'A', value: 27 },
@@ -34,6 +34,8 @@ const donutPie = new DonutPie('donut_chart', {
       formatter: () => '',
     },
   },
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 donutPie.render();

@@ -1,4 +1,4 @@
-const { Column: GroupedColumn } = G2Plot;
+const { Column: GroupedColumn } = G2Plot; // REQUIRED: import from G2Plot
 
 const grouped_column_data = [
   { name: 'London', month: 'A', rain: 140 },
@@ -22,6 +22,8 @@ const groupedColumn = new GroupedColumn('grouped_column_chart', {
   seriesField: 'name',
   label: null,
   legend: false,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 groupedColumn.render();

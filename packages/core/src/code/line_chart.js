@@ -1,4 +1,4 @@
-const { Line } = G2Plot;
+const { Line } = G2Plot; // REQUIRED: import from G2Plot
 
 const line_data = [
   { name: 'London', year: '2016', rain: 130 },
@@ -33,6 +33,8 @@ const line = new Line('line_chart', {
     tickCount: 3,
   },
   legend: false,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 line.render();

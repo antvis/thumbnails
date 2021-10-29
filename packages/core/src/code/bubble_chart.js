@@ -1,4 +1,5 @@
-const { Scatter: BubbleScatter } = G2Plot;
+const { Scatter: BubbleScatter } = G2Plot; // REQUIRED: import from G2Plot
+
 const bubbleMap = {
   A: 0,
   B: 1,
@@ -47,12 +48,14 @@ const bubbleScatterPlot = new BubbleScatter('bubble_chart', {
   pointStyle: (item) => {
     return {
       fillOpacity: 0.6,
-      stroke: chartColors[bubbleMap[item['HA']]],
+      stroke: chartColors[bubbleMap[item.HA]],
       lineWidth: 1,
       strokeOpacity: 1,
     };
   },
   legend: false,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 bubbleScatterPlot.render();

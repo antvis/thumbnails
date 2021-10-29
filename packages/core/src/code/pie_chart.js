@@ -1,4 +1,4 @@
-const { Pie } = G2Plot;
+const { Pie } = G2Plot; // REQUIRED: import from G2Plot
 
 const pie_data = [
   { type: 'A', value: 35 },
@@ -26,6 +26,8 @@ const pie = new Pie('pie_chart', {
     },
   },
   legend: false,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 pie.render();

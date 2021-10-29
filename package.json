@@ -5,12 +5,18 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx \"./\"",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx './' --ignore-pattern 'packages/'",
+    "lint:core": "cd ./packages/core && npm run lint",
+    "lint:ui": "cd ./packages/ui && npm run lint",
+    "lint:all": "run-p lint lint:core lint:ui",
     "lint-fix": "npm run lint -- --fix",
+    "lint-fix:core": "cd ./packages/core && npm run lint-fix",
+    "lint-fix:ui": "cd ./packages/ui && npm run lint-fix",
+    "lint-fix:all": "run-p lint-fix lint-fix:core lint-fix:ui",
     "prettier": " prettier -c \"**/*\"",
     "prettier-fix": "npm run prettier -- --write",
     "prettier:core": "cd ./packages/core && npm run prettier",
-    "format": "npm run prettier-fix && npm run lint-fix",
+    "format": "npm run prettier-fix && npm run lint-fix:all",
     "format:core": "cd ./packages/core && npm run format",
     "format:ui": "cd ./packages/ui && npm run format",
     "format:packages": "run-p format:*",
@@ -38,7 +44,7 @@
     "setup:demo": "cd demo && npm install --package-lock=false",
     "start:demo": "npm run setup:demo && cd demo && npm start",
     "boot": "lerna bootstrap",
-    "one-stop-setup": "npm install --package-lock=false && run-s boot build:scripts generate build:packages setup:demo"
+    "one-stop-setup": "npm install --package-lock=false && run-s boot generate build:packages setup:demo"
   },
   "devDependencies": {
     "@antv/knowledge": "^1.1.4",

@@ -1,4 +1,4 @@
-const { Area } = G2Plot;
+const { Area } = G2Plot; // REQUIRED: import from G2Plot
 
 const area_data = [
   { year: 2016, value: 150 },
@@ -33,7 +33,8 @@ const area = new Area('area_chart', {
       },
     },
   },
-  renderer: 'svg',
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 area.render();

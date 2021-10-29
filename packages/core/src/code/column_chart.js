@@ -1,4 +1,4 @@
-const { Column } = G2Plot;
+const { Column } = G2Plot; // REQUIRED: import from G2Plot
 
 const column_data = [
   { category: 'A', value: 140 },
@@ -22,6 +22,8 @@ const column = new Column('column_chart', {
   },
   minColumnWidth: 20,
   maxColumnWidth: 20,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 column.render();
