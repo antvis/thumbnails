@@ -43,8 +43,6 @@ if (Thumbnails.pie_chart) {
 });
 ```
 
-**NOTICE: You may have to import lower_case chart id in tools like Codesandbox or riddle. See [issue#12](https://github.com/antvis/thumbnails/issues/12).**
-
 ```ts
 import { BAR_CHART } from '@antv/thumbnails';
 
