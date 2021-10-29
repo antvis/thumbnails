@@ -12,7 +12,7 @@ const END_SIGN = '<!-- PREVIEW END -->';
 const genPreviewHTML = (fileNames: string[]) => `
 <div style="display: flex; flex-flow: row wrap;">
 ${fileNames
-  .map((file: string) => `  <img src="${GITHUB_IMAGE_PATH_PREFIX}${file}" width="180" height="200">`)
+  .map((file: string) => `  <img src="${GITHUB_IMAGE_PATH_PREFIX}${file}" width="200" height="200">`)
   .join('\n')}
 </div>
 `;
