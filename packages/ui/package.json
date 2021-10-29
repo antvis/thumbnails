@@ -4,7 +4,7 @@
   "description": "React Component for Thumbnails of Chart Types.",
   "main": "lib/src/index.js",
   "types": "lib/src/index.d.ts",
-  "browser": "dist/index.js",
+  "unpkg": "dist/index.min.js",
   "module": "esm/src/index.js",
   "files": [
     "esm",
@@ -24,18 +24,7 @@
     "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib",
     "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm",
     "build": "run-p build:*",
-    "test": "jest",
-    "ci": "run-s lint schema test build",
-    "prepare:demo": "cd demo && npm install --package-lock=false",
-    "start:demo": "npm run prepare:demo && cd demo && npm start",
-    "prepublishOnly": "npm run ci",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
-    "gen-ts": "node lib/scripts/generate-ts-files.js",
-    "readmepreview": "node lib/scripts/readme-preview.js",
-    "test:gen": "npm run build && node lib/scripts/generate-sample-html.js && node lib/scripts/get-svgs.js",
-    "update": "npm run build && npm run gen-ts && npm run readmepreview && npm run build"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
