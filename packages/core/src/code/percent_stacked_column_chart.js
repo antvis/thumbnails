@@ -1,4 +1,4 @@
-const { Column: PercentStackedColumn } = G2Plot;
+const { Column: PercentStackedColumn } = G2Plot; // REQUIRED: import from G2Plot
 
 const percent_stacked_column_data = [
   { country: 'Europe', year: 'A', value: 48 },
@@ -30,12 +30,14 @@ const percentStackedColumn = new PercentStackedColumn('percent_stacked_column_ch
   yAxis: {
     label: {
       formatter: (value) => {
-        return value * 100 + '%';
+        return `${value * 100}%`;
       },
     },
     tickCount: 3,
   },
   legend: false,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 percentStackedColumn.render();

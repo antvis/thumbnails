@@ -16,6 +16,3 @@ es/
 tests/
 webpack.*.js
 global.d.ts
-
-# ignore code templates
-packages/core/src/code/**.js

@@ -1,0 +1,12 @@
+// radar_chart
+
+import { ChartImageInfo } from '../../interfaces';
+
+const RADAR_CHART: ChartImageInfo = {
+  id: 'radar_chart',
+  name: 'Radar Chart',
+  svgCode:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" style="width:200px;height:200px;vertical-align:middle" display="inline-block"><path fill="transparent" d="M0 0h200v200H0z"/><g fill="none" stroke="#D9D9D9" stroke-dasharray="null"><path d="M99.334 100V27M99.334 100l63.22-36.5M99.334 100l63.22 36.5M99.334 100v73M99.334 100l-63.22 36.5M99.334 100l-63.22-36.5M99.334 100V27"/><g><path d="M99.334 100h0zM99.334 81.75l15.805 9.125v18.25l-15.805 9.125-15.805-9.125v-18.25l15.805-9.125z"/><path d="M99.334 63.5l31.61 18.25v36.5l-31.61 18.25-31.61-18.25v-36.5l31.61-18.25z"/><path d="M99.334 45.25l47.415 27.375v54.75L99.334 154.75l-47.415-27.375v-54.75L99.334 45.25z"/><path d="M99.334 27l63.22 36.5v73L99.334 173l-63.22-36.5v-73L99.334 27z"/></g></g><g fill="#8C8C8C" font-family="&quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;" font-size="12" paint-order="stroke"><text x="99.334" y="12" alignment-baseline="after-edge" text-anchor="middle">A</text><text x="175.544" y="56" alignment-baseline="after-edge" text-anchor="left">B</text><text x="175.544" y="144" alignment-baseline="before-edge" text-anchor="left">C</text><text x="99.334" y="188" alignment-baseline="before-edge" text-anchor="middle">D</text><text x="23.124" y="144" alignment-baseline="before-edge" text-anchor="end">E</text><text x="23.124" y="56" alignment-baseline="after-edge" text-anchor="end">F</text></g><g><path fill="none" stroke="#5B8FF9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M99.334 30.746l54.75 37.644-26.477 47.933-28.273 44.753-44.703-35.267L36.114 63.5z"/><g fill="#5B8FF9" stroke="#5B8FF9" stroke-opacity=".95"><path d="M96.334 30.746a3 3 0 106 0 3 3 0 10-6 0M151.084 68.39a3 3 0 106 0 3 3 0 10-6 0M124.607 116.323a3 3 0 106 0 3 3 0 10-6 0M96.334 161.076a3 3 0 106 0 3 3 0 10-6 0M51.63 125.81a3 3 0 106 0 3 3 0 10-6 0M33.114 63.5a3 3 0 106 0 3 3 0 10-6 0"/></g><path fill="#5B8FF9" fill-opacity=".25" d="M99.334 30.746l54.75 37.644-26.477 47.933-28.273 44.753-44.703-35.267L36.114 63.5l63.22-32.754V100z"/></g></svg>',
+};
+
+export default RADAR_CHART;

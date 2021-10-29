@@ -1,6 +1,5 @@
-const { Radar } = G2Plot;
+const { Radar } = G2Plot; // REQUIRED: import from G2Plot
 
-// 数据更新于 2021.01.09
 const radar_data = [
   { name: 'A', star: 90 },
   { name: 'B', star: 75 },
@@ -20,7 +19,7 @@ const radarPlot = new Radar('radar_chart', {
   appendPadding: [0, 10, 0, 10],
   meta: {
     star: {
-      alias: 'star 数量',
+      alias: 'star count',
       min: 0,
       nice: true,
       formatter: (v) => Number(v).toFixed(2),
@@ -51,7 +50,6 @@ const radarPlot = new Radar('radar_chart', {
     },
   },
   shape: 'circle',
-  // 开启辅助点
   point: {
     size: 3,
     color: '#5B8FF9',
@@ -60,6 +58,8 @@ const radarPlot = new Radar('radar_chart', {
     },
   },
   area: {},
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 radarPlot.render();

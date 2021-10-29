@@ -1,4 +1,4 @@
-const { Bar: GroupedBar } = G2Plot;
+const { Bar: GroupedBar } = G2Plot; // REQUIRED: import from G2Plot
 
 const grouped_bar_data = [
   { name: 'London', month: 'A', rain: 140 },
@@ -22,6 +22,8 @@ const groupedBar = new GroupedBar('grouped_bar_chart', {
   seriesField: 'name',
   label: null,
   legend: false,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 groupedBar.render();

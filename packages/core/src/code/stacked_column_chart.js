@@ -1,4 +1,4 @@
-const { Column: StackedColumn } = G2Plot;
+const { Column: StackedColumn } = G2Plot; // REQUIRED: import from G2Plot
 
 const stacked_column_data = [
   { name: 'London', month: 'A', rain: 80 },
@@ -23,6 +23,8 @@ const stackedColumn = new StackedColumn('stacked_column_chart', {
   label: null,
   legend: false,
   maxColumnWidth: 16,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 stackedColumn.render();

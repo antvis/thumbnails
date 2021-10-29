@@ -1,4 +1,4 @@
-const { Area: PercentStackedArea } = G2Plot;
+const { Area: PercentStackedArea } = G2Plot; // REQUIRED: import from G2Plot
 
 const percent_stacked_area_data = [
   { country: 'Europe', year: '2016', value: 35 },
@@ -39,13 +39,14 @@ const percentStackedArea = new PercentStackedArea('percent_stacked_area_chart', 
   yAxis: {
     label: {
       formatter: (value) => {
-        return value * 100 + '%';
+        return `${value * 100}%`;
       },
     },
     tickCount: 3,
   },
-  renderer: 'svg',
   legend: false,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 percentStackedArea.render();

@@ -1,4 +1,4 @@
-const { Bar: StackedBar } = G2Plot;
+const { Bar: StackedBar } = G2Plot; // REQUIRED: import from G2Plot
 
 const stacked_bar_data = [
   { name: 'London', month: 'A', rain: 80 },
@@ -23,6 +23,8 @@ const stackedBar = new StackedBar('stacked_bar_chart', {
   label: null,
   legend: false,
   maxBarWidth: 16,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 stackedBar.render();

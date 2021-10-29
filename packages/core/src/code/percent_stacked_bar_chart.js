@@ -1,4 +1,4 @@
-const { Bar: PercentStackedBar } = G2Plot;
+const { Bar: PercentStackedBar } = G2Plot; // REQUIRED: import from G2Plot
 
 const percent_stacked_bar_data = [
   { country: 'Asia', year: 'A', value: 48 },
@@ -31,11 +31,13 @@ const percentStackedBar = new PercentStackedBar('percent_stacked_bar_chart', {
   xAxis: {
     label: {
       formatter: (value) => {
-        return value * 100 + '%';
+        return `${value * 100}%`;
       },
     },
     tickCount: 3,
   },
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 percentStackedBar.render();

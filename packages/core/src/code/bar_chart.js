@@ -1,4 +1,4 @@
-const { Bar } = G2Plot;
+const { Bar } = G2Plot; // REQUIRED: import from G2Plot
 
 const bar_data = [
   { category: 'A', value: 140 },
@@ -33,6 +33,8 @@ const bar = new Bar('bar_chart', {
   },
   minColumnWidth: 20,
   maxColumnWidth: 20,
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 bar.render();

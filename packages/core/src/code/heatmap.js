@@ -1,4 +1,4 @@
-const { Heatmap } = G2Plot;
+const { Heatmap } = G2Plot; // REQUIRED: import from G2Plot
 
 const heatmap_data = [
   { name: '4', year: 'A', rain: 0 },
@@ -51,6 +51,8 @@ const heatmap = new Heatmap('heatmap', {
     stroke: '#fff',
     lineWidth: 4,
   },
+  animation: false, // REQUIRED: NO animation
+  renderer: 'svg', // REQUIRED: render into svg
 });
 
 heatmap.render();
