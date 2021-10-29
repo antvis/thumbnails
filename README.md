@@ -6,25 +6,25 @@ Thumbnail images for different chart types from [CKB](https://github.com/antvis/
 <!-- PREVIEW START -->
 
 <div style="display: flex; flex-flow: row wrap;">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/area_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/bar_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/bubble_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/column_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/donut_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/grouped_bar_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/grouped_column_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/heatmap.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/histogram.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/line_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/percent_stacked_area_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/percent_stacked_bar_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/percent_stacked_column_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/pie_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/radar_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/scatter_plot.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/stacked_area_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/stacked_bar_chart.svg" width="200" height="200">
-  <img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/stacked_column_chart.svg" width="200" height="200">
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/area_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/bar_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/bubble_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/column_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/donut_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/grouped_bar_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/grouped_column_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/heatmap.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/histogram.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/line_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/percent_stacked_area_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/percent_stacked_bar_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/percent_stacked_column_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/pie_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/radar_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/scatter_plot.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/stacked_area_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/stacked_bar_chart.svg" width="200" height="200"></div>
+  <div style="margin: 15px;"><img src="https://github.com/antvis/thumbnails/blob/master/packages/core/src/generated/svgs/stacked_column_chart.svg" width="200" height="200"></div>
 </div>
 
 <!-- PREVIEW END -->
