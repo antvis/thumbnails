@@ -55,6 +55,9 @@
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.15.3"
+  },
   "lint-staged": {
     "*.{ts,tsx}": [
       "eslint --fix",
@@ -72,8 +75,5 @@
       "path": "dist/index.min.js",
       "limit": "56 Kb"
     }
-  ],
-  "dependencies": {
-    "@babel/runtime": "^7.15.3"
-  }
+  ]
 }
