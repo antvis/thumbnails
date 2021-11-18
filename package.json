@@ -48,7 +48,7 @@
     "start:demo": "npm run setup:demo && cd demo && npm start",
     "boot": "lerna bootstrap",
     "ci": "run-s format-all lint-staged test build",
-    "release": "run-s ci lerna publish",
+    "release": "npm run ci && lerna publish",
     "one-stop-setup": "npm install --package-lock=false && run-s boot generate build-packages setup:demo"
   },
   "devDependencies": {
