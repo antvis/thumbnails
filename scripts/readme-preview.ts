@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
+import { CHART_ID_OPTIONS, ChartID } from '@antv/ckb';
 import * as fse from 'fs-extra';
 import { GITHUB_IMAGE_PATH_PREFIX, SVG_DIR } from './consts';
 

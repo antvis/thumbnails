@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { CHART_ID_OPTIONS, ChartID } from '@antv/knowledge';
+import { CHART_ID_OPTIONS, ChartID } from '@antv/ckb';
 import * as fse from 'fs-extra';
 import * as inquirer from 'inquirer';
 import { SVG_DIR, CHART_TS_DIR, THUMBNAILS_TS_PATH } from './consts';

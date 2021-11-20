@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fse from 'fs-extra';
-import { ChartID, CHART_ID_OPTIONS, CKBJson } from '@antv/knowledge';
+import { ChartID, CHART_ID_OPTIONS, CKBJson } from '@antv/ckb';
 
 export async function ensureAndResetDir(dir: string): Promise<void> {
   const dirExists = await fse.pathExists(dir);
