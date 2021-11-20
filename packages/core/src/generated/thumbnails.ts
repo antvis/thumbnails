@@ -21,6 +21,7 @@ import SCATTER_PLOT from './charts/scatter_plot';
 import STACKED_AREA_CHART from './charts/stacked_area_chart';
 import STACKED_BAR_CHART from './charts/stacked_bar_chart';
 import STACKED_COLUMN_CHART from './charts/stacked_column_chart';
+import STEP_LINE_CHART from './charts/step_line_chart';
 
 const Thumbnails: Partial<Record<string, ChartImageInfo>> = {
   area_chart: AREA_CHART,
@@ -42,6 +43,7 @@ const Thumbnails: Partial<Record<string, ChartImageInfo>> = {
   stacked_area_chart: STACKED_AREA_CHART,
   stacked_bar_chart: STACKED_BAR_CHART,
   stacked_column_chart: STACKED_COLUMN_CHART,
+  step_line_chart: STEP_LINE_CHART,
 };
 
 export default Thumbnails;
@@ -66,6 +68,7 @@ export const THUMBNAIL_IDS = [
   'stacked_area_chart',
   'stacked_bar_chart',
   'stacked_column_chart',
+  'step_line_chart',
 ] as const;
 export type ThumbnailID = typeof THUMBNAIL_IDS[number];
 export function isThumbnailID(id: string): id is ThumbnailID {
@@ -92,4 +95,5 @@ export {
   STACKED_AREA_CHART,
   STACKED_BAR_CHART,
   STACKED_COLUMN_CHART,
+  STEP_LINE_CHART,
 };
