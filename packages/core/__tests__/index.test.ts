@@ -1,4 +1,4 @@
-import { ChartID, CKBJson } from '@antv/knowledge';
+import { ChartID, CKBJson } from '@antv/ckb';
 import Thumbnails, { BAR_CHART } from '../src/index';
 
 test('index', () => {
